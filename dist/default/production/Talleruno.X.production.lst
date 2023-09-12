@@ -1,0 +1,2509 @@
+
+
+Microchip MPLAB XC8 Assembler V2.41 build 20230208172133 
+                                                                                               Wed Sep 06 08:08:57 2023
+
+Microchip MPLAB XC8 C Compiler v2.41 (Free license) build 20230208172133 Og1 
+     1                           	processor	16F1939
+     2                           	pagewidth 120
+     3                           	opt	flic
+     4                           	psect	stringtext1,global,class=STRCODE,delta=2,noexec
+     5                           	psect	nvBANK0,global,class=BANK0,space=1,delta=1,noexec
+     6                           	psect	cinit,global,class=CODE,merge=1,delta=2
+     7                           	psect	bssCOMMON,global,class=COMMON,space=1,delta=1,noexec
+     8                           	psect	bssBANK0,global,class=BANK0,space=1,delta=1,noexec
+     9                           	psect	clrtext,global,class=CODE,delta=2
+    10                           	psect	cstackCOMMON,global,class=COMMON,space=1,delta=1,noexec
+    11                           	psect	maintext,global,class=CODE,merge=1,split=1,delta=2
+    12                           	psect	text1,local,class=CODE,merge=1,delta=2
+    13                           	psect	text2,local,class=CODE,merge=1,delta=2
+    14                           	psect	text3,local,class=CODE,merge=1,delta=2
+    15                           	psect	text4,local,class=CODE,merge=1,delta=2
+    16                           	psect	text5,local,class=CODE,merge=1,delta=2
+    17                           	psect	text6,local,class=CODE,merge=1,delta=2
+    18                           	psect	text7,local,class=CODE,merge=1,delta=2
+    19                           	psect	text8,local,class=CODE,merge=1,delta=2
+    20                           	psect	text9,local,class=CODE,merge=1,delta=2
+    21                           	psect	text10,local,class=CODE,merge=1,delta=2
+    22                           	psect	config,global,abs,ovrld,class=CONFIG,space=4,delta=2,noexec
+    23                           	dabs	1,0x7E,2
+    24     0000                     
+    25                           ; Generated 06/07/2023 GMT
+    26                           ; 
+    27                           ; Copyright © 2023, Microchip Technology Inc. and its subsidiaries ("Microchip")
+    28                           ; All rights reserved.
+    29                           ; 
+    30                           ; This software is developed by Microchip Technology Inc. and its subsidiaries ("Microch
+      +                          ip").
+    31                           ; 
+    32                           ; Redistribution and use in source and binary forms, with or without modification, are
+    33                           ; permitted provided that the following conditions are met:
+    34                           ; 
+    35                           ;     1. Redistributions of source code must retain the above copyright notice, this lis
+      +                          t of
+    36                           ;        conditions and the following disclaimer.
+    37                           ; 
+    38                           ;     2. Redistributions in binary form must reproduce the above copyright notice, this 
+      +                          list
+    39                           ;        of conditions and the following disclaimer in the documentation and/or other
+    40                           ;        materials provided with the distribution. Publication is not required when
+    41                           ;        this file is used in an embedded application.
+    42                           ; 
+    43                           ;     3. Microchip's name may not be used to endorse or promote products derived from th
+      +                          is
+    44                           ;        software without specific prior written permission.
+    45                           ; 
+    46                           ; THIS SOFTWARE IS PROVIDED BY MICROCHIP "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES,
+    47                           ; INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS F
+      +                          OR
+    48                           ; PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL MICROCHIP BE LIABLE FOR ANY DIRECT, INDIREC
+      +                          T,
+    49                           ; INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING BUT NOT LIMITED TO
+    50                           ; PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA OR PROFITS; OR BUSINESS
+    51                           ; INTERRUPTION) HOWSOEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, ST
+      +                          RICT
+    52                           ; LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE U
+      +                          SE OF
+    53                           ; THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+    54                           ; 
+    55                           ; 
+    56                           ; Code-generator required, PIC16F1939 Definitions
+    57                           ; 
+    58                           ; SFR Addresses
+    59     0000                     	;# 
+    60     0001                     	;# 
+    61     0002                     	;# 
+    62     0003                     	;# 
+    63     0004                     	;# 
+    64     0005                     	;# 
+    65     0006                     	;# 
+    66     0007                     	;# 
+    67     0008                     	;# 
+    68     0009                     	;# 
+    69     000A                     	;# 
+    70     000B                     	;# 
+    71     000C                     	;# 
+    72     000D                     	;# 
+    73     000E                     	;# 
+    74     000F                     	;# 
+    75     0010                     	;# 
+    76     0011                     	;# 
+    77     0012                     	;# 
+    78     0013                     	;# 
+    79     0015                     	;# 
+    80     0016                     	;# 
+    81     0016                     	;# 
+    82     0017                     	;# 
+    83     0018                     	;# 
+    84     0019                     	;# 
+    85     001A                     	;# 
+    86     001B                     	;# 
+    87     001C                     	;# 
+    88     001E                     	;# 
+    89     001F                     	;# 
+    90     008C                     	;# 
+    91     008D                     	;# 
+    92     008E                     	;# 
+    93     008F                     	;# 
+    94     0090                     	;# 
+    95     0091                     	;# 
+    96     0092                     	;# 
+    97     0093                     	;# 
+    98     0095                     	;# 
+    99     0096                     	;# 
+   100     0097                     	;# 
+   101     0098                     	;# 
+   102     0099                     	;# 
+   103     009A                     	;# 
+   104     009B                     	;# 
+   105     009B                     	;# 
+   106     009C                     	;# 
+   107     009D                     	;# 
+   108     009E                     	;# 
+   109     010C                     	;# 
+   110     010D                     	;# 
+   111     010E                     	;# 
+   112     010F                     	;# 
+   113     0110                     	;# 
+   114     0111                     	;# 
+   115     0112                     	;# 
+   116     0113                     	;# 
+   117     0114                     	;# 
+   118     0115                     	;# 
+   119     0116                     	;# 
+   120     0117                     	;# 
+   121     0118                     	;# 
+   122     0119                     	;# 
+   123     011A                     	;# 
+   124     011B                     	;# 
+   125     011D                     	;# 
+   126     018C                     	;# 
+   127     018D                     	;# 
+   128     018F                     	;# 
+   129     0190                     	;# 
+   130     0191                     	;# 
+   131     0191                     	;# 
+   132     0192                     	;# 
+   133     0193                     	;# 
+   134     0193                     	;# 
+   135     0193                     	;# 
+   136     0194                     	;# 
+   137     0195                     	;# 
+   138     0196                     	;# 
+   139     0199                     	;# 
+   140     019A                     	;# 
+   141     019B                     	;# 
+   142     019B                     	;# 
+   143     019B                     	;# 
+   144     019B                     	;# 
+   145     019C                     	;# 
+   146     019C                     	;# 
+   147     019D                     	;# 
+   148     019E                     	;# 
+   149     019F                     	;# 
+   150     020D                     	;# 
+   151     0210                     	;# 
+   152     0211                     	;# 
+   153     0212                     	;# 
+   154     0213                     	;# 
+   155     0214                     	;# 
+   156     0215                     	;# 
+   157     0215                     	;# 
+   158     0216                     	;# 
+   159     0217                     	;# 
+   160     0291                     	;# 
+   161     0291                     	;# 
+   162     0292                     	;# 
+   163     0293                     	;# 
+   164     0294                     	;# 
+   165     0295                     	;# 
+   166     0295                     	;# 
+   167     0296                     	;# 
+   168     0298                     	;# 
+   169     0298                     	;# 
+   170     0299                     	;# 
+   171     029A                     	;# 
+   172     029B                     	;# 
+   173     029C                     	;# 
+   174     029C                     	;# 
+   175     029D                     	;# 
+   176     029E                     	;# 
+   177     029F                     	;# 
+   178     0311                     	;# 
+   179     0311                     	;# 
+   180     0312                     	;# 
+   181     0313                     	;# 
+   182     0314                     	;# 
+   183     0315                     	;# 
+   184     0315                     	;# 
+   185     0316                     	;# 
+   186     0318                     	;# 
+   187     0318                     	;# 
+   188     0319                     	;# 
+   189     031A                     	;# 
+   190     031C                     	;# 
+   191     031C                     	;# 
+   192     031D                     	;# 
+   193     031E                     	;# 
+   194     0394                     	;# 
+   195     0395                     	;# 
+   196     0396                     	;# 
+   197     0415                     	;# 
+   198     0416                     	;# 
+   199     0417                     	;# 
+   200     041C                     	;# 
+   201     041D                     	;# 
+   202     041E                     	;# 
+   203     0791                     	;# 
+   204     0792                     	;# 
+   205     0793                     	;# 
+   206     0794                     	;# 
+   207     0795                     	;# 
+   208     0798                     	;# 
+   209     0799                     	;# 
+   210     079A                     	;# 
+   211     07A0                     	;# 
+   212     07A1                     	;# 
+   213     07A2                     	;# 
+   214     07A3                     	;# 
+   215     07A4                     	;# 
+   216     07A5                     	;# 
+   217     07A6                     	;# 
+   218     07A7                     	;# 
+   219     07A8                     	;# 
+   220     07A9                     	;# 
+   221     07AA                     	;# 
+   222     07AB                     	;# 
+   223     0FE4                     	;# 
+   224     0FE5                     	;# 
+   225     0FE6                     	;# 
+   226     0FE7                     	;# 
+   227     0FE8                     	;# 
+   228     0FE9                     	;# 
+   229     0FEA                     	;# 
+   230     0FEB                     	;# 
+   231     0FED                     	;# 
+   232     0FEE                     	;# 
+   233     0FEF                     	;# 
+   234     0000                     	;# 
+   235     0001                     	;# 
+   236     0002                     	;# 
+   237     0003                     	;# 
+   238     0004                     	;# 
+   239     0005                     	;# 
+   240     0006                     	;# 
+   241     0007                     	;# 
+   242     0008                     	;# 
+   243     0009                     	;# 
+   244     000A                     	;# 
+   245     000B                     	;# 
+   246     000C                     	;# 
+   247     000D                     	;# 
+   248     000E                     	;# 
+   249     000F                     	;# 
+   250     0010                     	;# 
+   251     0011                     	;# 
+   252     0012                     	;# 
+   253     0013                     	;# 
+   254     0015                     	;# 
+   255     0016                     	;# 
+   256     0016                     	;# 
+   257     0017                     	;# 
+   258     0018                     	;# 
+   259     0019                     	;# 
+   260     001A                     	;# 
+   261     001B                     	;# 
+   262     001C                     	;# 
+   263     001E                     	;# 
+   264     001F                     	;# 
+   265     008C                     	;# 
+   266     008D                     	;# 
+   267     008E                     	;# 
+   268     008F                     	;# 
+   269     0090                     	;# 
+   270     0091                     	;# 
+   271     0092                     	;# 
+   272     0093                     	;# 
+   273     0095                     	;# 
+   274     0096                     	;# 
+   275     0097                     	;# 
+   276     0098                     	;# 
+   277     0099                     	;# 
+   278     009A                     	;# 
+   279     009B                     	;# 
+   280     009B                     	;# 
+   281     009C                     	;# 
+   282     009D                     	;# 
+   283     009E                     	;# 
+   284     010C                     	;# 
+   285     010D                     	;# 
+   286     010E                     	;# 
+   287     010F                     	;# 
+   288     0110                     	;# 
+   289     0111                     	;# 
+   290     0112                     	;# 
+   291     0113                     	;# 
+   292     0114                     	;# 
+   293     0115                     	;# 
+   294     0116                     	;# 
+   295     0117                     	;# 
+   296     0118                     	;# 
+   297     0119                     	;# 
+   298     011A                     	;# 
+   299     011B                     	;# 
+   300     011D                     	;# 
+   301     018C                     	;# 
+   302     018D                     	;# 
+   303     018F                     	;# 
+   304     0190                     	;# 
+   305     0191                     	;# 
+   306     0191                     	;# 
+   307     0192                     	;# 
+   308     0193                     	;# 
+   309     0193                     	;# 
+   310     0193                     	;# 
+   311     0194                     	;# 
+   312     0195                     	;# 
+   313     0196                     	;# 
+   314     0199                     	;# 
+   315     019A                     	;# 
+   316     019B                     	;# 
+   317     019B                     	;# 
+   318     019B                     	;# 
+   319     019B                     	;# 
+   320     019C                     	;# 
+   321     019C                     	;# 
+   322     019D                     	;# 
+   323     019E                     	;# 
+   324     019F                     	;# 
+   325     020D                     	;# 
+   326     0210                     	;# 
+   327     0211                     	;# 
+   328     0212                     	;# 
+   329     0213                     	;# 
+   330     0214                     	;# 
+   331     0215                     	;# 
+   332     0215                     	;# 
+   333     0216                     	;# 
+   334     0217                     	;# 
+   335     0291                     	;# 
+   336     0291                     	;# 
+   337     0292                     	;# 
+   338     0293                     	;# 
+   339     0294                     	;# 
+   340     0295                     	;# 
+   341     0295                     	;# 
+   342     0296                     	;# 
+   343     0298                     	;# 
+   344     0298                     	;# 
+   345     0299                     	;# 
+   346     029A                     	;# 
+   347     029B                     	;# 
+   348     029C                     	;# 
+   349     029C                     	;# 
+   350     029D                     	;# 
+   351     029E                     	;# 
+   352     029F                     	;# 
+   353     0311                     	;# 
+   354     0311                     	;# 
+   355     0312                     	;# 
+   356     0313                     	;# 
+   357     0314                     	;# 
+   358     0315                     	;# 
+   359     0315                     	;# 
+   360     0316                     	;# 
+   361     0318                     	;# 
+   362     0318                     	;# 
+   363     0319                     	;# 
+   364     031A                     	;# 
+   365     031C                     	;# 
+   366     031C                     	;# 
+   367     031D                     	;# 
+   368     031E                     	;# 
+   369     0394                     	;# 
+   370     0395                     	;# 
+   371     0396                     	;# 
+   372     0415                     	;# 
+   373     0416                     	;# 
+   374     0417                     	;# 
+   375     041C                     	;# 
+   376     041D                     	;# 
+   377     041E                     	;# 
+   378     0791                     	;# 
+   379     0792                     	;# 
+   380     0793                     	;# 
+   381     0794                     	;# 
+   382     0795                     	;# 
+   383     0798                     	;# 
+   384     0799                     	;# 
+   385     079A                     	;# 
+   386     07A0                     	;# 
+   387     07A1                     	;# 
+   388     07A2                     	;# 
+   389     07A3                     	;# 
+   390     07A4                     	;# 
+   391     07A5                     	;# 
+   392     07A6                     	;# 
+   393     07A7                     	;# 
+   394     07A8                     	;# 
+   395     07A9                     	;# 
+   396     07AA                     	;# 
+   397     07AB                     	;# 
+   398     0FE4                     	;# 
+   399     0FE5                     	;# 
+   400     0FE6                     	;# 
+   401     0FE7                     	;# 
+   402     0FE8                     	;# 
+   403     0FE9                     	;# 
+   404     0FEA                     	;# 
+   405     0FEB                     	;# 
+   406     0FED                     	;# 
+   407     0FEE                     	;# 
+   408     0FEF                     	;# 
+   409     0000                     	;# 
+   410     0001                     	;# 
+   411     0002                     	;# 
+   412     0003                     	;# 
+   413     0004                     	;# 
+   414     0005                     	;# 
+   415     0006                     	;# 
+   416     0007                     	;# 
+   417     0008                     	;# 
+   418     0009                     	;# 
+   419     000A                     	;# 
+   420     000B                     	;# 
+   421     000C                     	;# 
+   422     000D                     	;# 
+   423     000E                     	;# 
+   424     000F                     	;# 
+   425     0010                     	;# 
+   426     0011                     	;# 
+   427     0012                     	;# 
+   428     0013                     	;# 
+   429     0015                     	;# 
+   430     0016                     	;# 
+   431     0016                     	;# 
+   432     0017                     	;# 
+   433     0018                     	;# 
+   434     0019                     	;# 
+   435     001A                     	;# 
+   436     001B                     	;# 
+   437     001C                     	;# 
+   438     001E                     	;# 
+   439     001F                     	;# 
+   440     008C                     	;# 
+   441     008D                     	;# 
+   442     008E                     	;# 
+   443     008F                     	;# 
+   444     0090                     	;# 
+   445     0091                     	;# 
+   446     0092                     	;# 
+   447     0093                     	;# 
+   448     0095                     	;# 
+   449     0096                     	;# 
+   450     0097                     	;# 
+   451     0098                     	;# 
+   452     0099                     	;# 
+   453     009A                     	;# 
+   454     009B                     	;# 
+   455     009B                     	;# 
+   456     009C                     	;# 
+   457     009D                     	;# 
+   458     009E                     	;# 
+   459     010C                     	;# 
+   460     010D                     	;# 
+   461     010E                     	;# 
+   462     010F                     	;# 
+   463     0110                     	;# 
+   464     0111                     	;# 
+   465     0112                     	;# 
+   466     0113                     	;# 
+   467     0114                     	;# 
+   468     0115                     	;# 
+   469     0116                     	;# 
+   470     0117                     	;# 
+   471     0118                     	;# 
+   472     0119                     	;# 
+   473     011A                     	;# 
+   474     011B                     	;# 
+   475     011D                     	;# 
+   476     018C                     	;# 
+   477     018D                     	;# 
+   478     018F                     	;# 
+   479     0190                     	;# 
+   480     0191                     	;# 
+   481     0191                     	;# 
+   482     0192                     	;# 
+   483     0193                     	;# 
+   484     0193                     	;# 
+   485     0193                     	;# 
+   486     0194                     	;# 
+   487     0195                     	;# 
+   488     0196                     	;# 
+   489     0199                     	;# 
+   490     019A                     	;# 
+   491     019B                     	;# 
+   492     019B                     	;# 
+   493     019B                     	;# 
+   494     019B                     	;# 
+   495     019C                     	;# 
+   496     019C                     	;# 
+   497     019D                     	;# 
+   498     019E                     	;# 
+   499     019F                     	;# 
+   500     020D                     	;# 
+   501     0210                     	;# 
+   502     0211                     	;# 
+   503     0212                     	;# 
+   504     0213                     	;# 
+   505     0214                     	;# 
+   506     0215                     	;# 
+   507     0215                     	;# 
+   508     0216                     	;# 
+   509     0217                     	;# 
+   510     0291                     	;# 
+   511     0291                     	;# 
+   512     0292                     	;# 
+   513     0293                     	;# 
+   514     0294                     	;# 
+   515     0295                     	;# 
+   516     0295                     	;# 
+   517     0296                     	;# 
+   518     0298                     	;# 
+   519     0298                     	;# 
+   520     0299                     	;# 
+   521     029A                     	;# 
+   522     029B                     	;# 
+   523     029C                     	;# 
+   524     029C                     	;# 
+   525     029D                     	;# 
+   526     029E                     	;# 
+   527     029F                     	;# 
+   528     0311                     	;# 
+   529     0311                     	;# 
+   530     0312                     	;# 
+   531     0313                     	;# 
+   532     0314                     	;# 
+   533     0315                     	;# 
+   534     0315                     	;# 
+   535     0316                     	;# 
+   536     0318                     	;# 
+   537     0318                     	;# 
+   538     0319                     	;# 
+   539     031A                     	;# 
+   540     031C                     	;# 
+   541     031C                     	;# 
+   542     031D                     	;# 
+   543     031E                     	;# 
+   544     0394                     	;# 
+   545     0395                     	;# 
+   546     0396                     	;# 
+   547     0415                     	;# 
+   548     0416                     	;# 
+   549     0417                     	;# 
+   550     041C                     	;# 
+   551     041D                     	;# 
+   552     041E                     	;# 
+   553     0791                     	;# 
+   554     0792                     	;# 
+   555     0793                     	;# 
+   556     0794                     	;# 
+   557     0795                     	;# 
+   558     0798                     	;# 
+   559     0799                     	;# 
+   560     079A                     	;# 
+   561     07A0                     	;# 
+   562     07A1                     	;# 
+   563     07A2                     	;# 
+   564     07A3                     	;# 
+   565     07A4                     	;# 
+   566     07A5                     	;# 
+   567     07A6                     	;# 
+   568     07A7                     	;# 
+   569     07A8                     	;# 
+   570     07A9                     	;# 
+   571     07AA                     	;# 
+   572     07AB                     	;# 
+   573     0FE4                     	;# 
+   574     0FE5                     	;# 
+   575     0FE6                     	;# 
+   576     0FE7                     	;# 
+   577     0FE8                     	;# 
+   578     0FE9                     	;# 
+   579     0FEA                     	;# 
+   580     0FEB                     	;# 
+   581     0FED                     	;# 
+   582     0FEE                     	;# 
+   583     0FEF                     	;# 
+   584                           
+   585                           	psect	stringtext1
+   586     0800                     __pstringtext1:
+   587     0800                     _tmultiplex:
+   588     0800  3401               	retlw	1
+   589     0801  3400               	retlw	0
+   590     0802                     __end_of_tmultiplex:
+   591                           
+   592                           	psect	nvBANK0
+   593     002B                     __pnvBANK0:
+   594     002B                     _val_sec:
+   595     002B                     	ds	2
+   596     000F                     _PORTD	set	15
+   597     000F                     _PORTDbits	set	15
+   598     000E                     _PORTCbits	set	14
+   599     000D                     _PORTB	set	13
+   600     000D                     _PORTBbits	set	13
+   601     000C                     _PORTAbits	set	12
+   602     0095                     _OPTION_REGbits	set	149
+   603     008C                     _TRISA	set	140
+   604     008D                     _TRISB	set	141
+   605     008D                     _TRISBbits	set	141
+   606     008C                     _TRISAbits	set	140
+   607     008F                     _TRISD	set	143
+   608     008E                     _TRISC	set	142
+   609     008F                     _TRISDbits	set	143
+   610     008E                     _TRISCbits	set	142
+   611     010D                     _LATBbits	set	269
+   612     010C                     _LATAbits	set	268
+   613     010F                     _LATD	set	271
+   614     010F                     _LATDbits	set	271
+   615     010E                     _LATCbits	set	270
+   616     010E                     _LATC	set	270
+   617     018F                     _ANSELD	set	399
+   618     018C                     _ANSELA	set	396
+   619     018D                     _ANSELB	set	397
+   620     018C                     _ANSELAbits	set	396
+   621     020D                     _WPUB	set	525
+   622                           
+   623                           	psect	cinit
+   624     07ED                     start_initialization:	
+   625                           ; #config settings
+   626                           
+   627     07ED                     __initialization:
+   628                           
+   629                           ; Clear objects allocated to COMMON
+   630     07ED  3070               	movlw	low __pbssCOMMON
+   631     07EE  0084               	movwf	4
+   632     07EF  3000               	movlw	high __pbssCOMMON
+   633     07F0  0085               	movwf	5
+   634     07F1  300A               	movlw	10
+   635     07F2  3185  2583  3187   	fcall	clear_ram0
+   636                           
+   637                           ; Clear objects allocated to BANK0
+   638     07F5  3020               	movlw	low __pbssBANK0
+   639     07F6  0084               	movwf	4
+   640     07F7  3000               	movlw	high __pbssBANK0
+   641     07F8  0085               	movwf	5
+   642     07F9  300B               	movlw	11
+   643     07FA  3185  2583  3187   	fcall	clear_ram0
+   644     07FD                     end_of_initialization:	
+   645                           ;End of C runtime variable initialization code
+   646                           
+   647     07FD                     __end_of__initialization:
+   648     07FD  0020               	movlb	0
+   649     07FE  3185  2D7D         	ljmp	_main	;jump to C main() function
+   650                           
+   651                           	psect	bssCOMMON
+   652     0070                     __pbssCOMMON:
+   653     0070                     _residuo:
+   654     0070                     	ds	2
+   655     0072                     _numero:
+   656     0072                     	ds	2
+   657     0074                     _led:
+   658     0074                     	ds	2
+   659     0076                     _contadordos:
+   660     0076                     	ds	2
+   661     0078                     _contador:
+   662     0078                     	ds	2
+   663                           
+   664                           	psect	bssBANK0
+   665     0020                     __pbssBANK0:
+   666     0020                     _centena:
+   667     0020                     	ds	2
+   668     0022                     _decena:
+   669     0022                     	ds	2
+   670     0024                     _unidad:
+   671     0024                     	ds	2
+   672     0026                     _Nibble2:
+   673     0026                     	ds	2
+   674     0028                     _Nibble1:
+   675     0028                     	ds	2
+   676     002A                     _marca:
+   677     002A                     	ds	1
+   678                           
+   679                           	psect	clrtext
+   680     0583                     clear_ram0:	
+   681                           ;	Called with FSR0 containing the base address, and
+   682                           ;	WREG with the size to clear
+   683                           
+   684     0583  0064               	clrwdt	;clear the watchdog before getting into this loop
+   685     0584                     clrloop0:
+   686     0584  0180               	clrf	0	;clear RAM location pointed to by FSR
+   687     0585  3101               	addfsr 0,1
+   688     0586  0B89               	decfsz	9,f	;Have we reached the end of clearing yet?
+   689     0587  2D84               	goto	clrloop0	;have we reached the end yet?
+   690     0588  3400               	retlw	0	;all done for this memory range, return
+   691                           
+   692                           	psect	cstackCOMMON
+   693     007A                     __pcstackCOMMON:
+   694     007A                     ?_Secuencia01:
+   695     007A                     ??_Secuencia01:	
+   696                           ; 1 bytes @ 0x0
+   697                           
+   698     007A                     ?_Secuencia02:	
+   699                           ; 1 bytes @ 0x0
+   700                           
+   701     007A                     ??_Secuencia02:	
+   702                           ; 1 bytes @ 0x0
+   703                           
+   704     007A                     ?_Secuencia03:	
+   705                           ; 1 bytes @ 0x0
+   706                           
+   707     007A                     ??_Secuencia03:	
+   708                           ; 1 bytes @ 0x0
+   709                           
+   710     007A                     ?_Secuencia04:	
+   711                           ; 1 bytes @ 0x0
+   712                           
+   713     007A                     ??_Secuencia04:	
+   714                           ; 1 bytes @ 0x0
+   715                           
+   716     007A                     ?_Secuencia05:	
+   717                           ; 1 bytes @ 0x0
+   718                           
+   719     007A                     ??_Secuencia05:	
+   720                           ; 1 bytes @ 0x0
+   721                           
+   722     007A                     ?_Secuencia06:	
+   723                           ; 1 bytes @ 0x0
+   724                           
+   725     007A                     ??_Secuencia06:	
+   726                           ; 1 bytes @ 0x0
+   727                           
+   728     007A                     ?_Secuencia07:	
+   729                           ; 1 bytes @ 0x0
+   730                           
+   731     007A                     ??_Secuencia07:	
+   732                           ; 1 bytes @ 0x0
+   733                           
+   734     007A                     ?_Secuencia08:	
+   735                           ; 1 bytes @ 0x0
+   736                           
+   737     007A                     ??_Secuencia08:	
+   738                           ; 1 bytes @ 0x0
+   739                           
+   740     007A                     ?_Secuencia09:	
+   741                           ; 1 bytes @ 0x0
+   742                           
+   743     007A                     ??_Secuencia09:	
+   744                           ; 1 bytes @ 0x0
+   745                           
+   746     007A                     ?_secuP5:	
+   747                           ; 1 bytes @ 0x0
+   748                           
+   749     007A                     ?_main:	
+   750                           ; 1 bytes @ 0x0
+   751                           
+   752                           
+   753                           ; 1 bytes @ 0x0
+   754     007A                     	ds	2
+   755     007C                     ??_secuP5:
+   756                           
+   757                           ; 1 bytes @ 0x2
+   758     007C                     	ds	2
+   759     007E                     ??_main:
+   760                           
+   761                           	psect	maintext
+   762     057D                     __pmaintext:	
+   763                           ; 1 bytes @ 0x4
+   764 ;;
+   765 ;;Main: autosize = 0, tempsize = 0, incstack = 0, save=0
+   766 ;;
+   767 ;; *************** function _main *****************
+   768 ;; Defined at:
+   769 ;;		line 938 in file "main.c"
+   770 ;; Parameters:    Size  Location     Type
+   771 ;;		None
+   772 ;; Auto vars:     Size  Location     Type
+   773 ;;		None
+   774 ;; Return value:  Size  Location     Type
+   775 ;;                  1    wreg      void 
+   776 ;; Registers used:
+   777 ;;		wreg, fsr0l, fsr0h, status,2, status,0, pclath, cstack
+   778 ;; Tracked objects:
+   779 ;;		On entry : B1F/0
+   780 ;;		On exit  : 0/0
+   781 ;;		Unchanged: 0/0
+   782 ;; Data sizes:     COMMON   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7   BANK8   BANK9  BANK10  BANK1
+      +1  BANK12
+   783 ;;      Params:         0       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0
+   784 ;;      Locals:         0       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0
+   785 ;;      Temps:          0       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0
+   786 ;;      Totals:         0       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0
+   787 ;;Total ram usage:        0 bytes
+   788 ;; Hardware stack levels required when called: 2
+   789 ;; This function calls:
+   790 ;;		_secuP5
+   791 ;; This function is called by:
+   792 ;;		Startup code after reset
+   793 ;; This function uses a non-reentrant model
+   794 ;;
+   795                           
+   796     057D                     _main:	
+   797                           ;psect for function _main
+   798                           
+   799     057D                     l312:	
+   800                           ;incstack = 0
+   801                           ; Regs used in _main: [wreg-fsr0h+status,2+status,0+pclath+cstack]
+   802                           ;main.c: 942:     while (1) {
+   803                           
+   804     057D                     l1975:
+   805                           
+   806                           ;main.c: 947:         secuP5();
+   807     057D  3186  26B7  3185   	fcall	_secuP5
+   808     0580  2D7D               	goto	l312
+   809     0581  3180  2802         	ljmp	start
+   810     0583                     __end_of_main:
+   811                           
+   812                           	psect	text1
+   813     06B7                     __ptext1:	
+   814 ;; *************** function _secuP5 *****************
+   815 ;; Defined at:
+   816 ;;		line 148 in file "main.c"
+   817 ;; Parameters:    Size  Location     Type
+   818 ;;		None
+   819 ;; Auto vars:     Size  Location     Type
+   820 ;;		None
+   821 ;; Return value:  Size  Location     Type
+   822 ;;                  1    wreg      void 
+   823 ;; Registers used:
+   824 ;;		wreg, fsr0l, fsr0h, status,2, status,0, pclath, cstack
+   825 ;; Tracked objects:
+   826 ;;		On entry : 0/0
+   827 ;;		On exit  : 0/0
+   828 ;;		Unchanged: 0/0
+   829 ;; Data sizes:     COMMON   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7   BANK8   BANK9  BANK10  BANK1
+      +1  BANK12
+   830 ;;      Params:         0       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0
+   831 ;;      Locals:         0       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0
+   832 ;;      Temps:          2       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0
+   833 ;;      Totals:         2       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0
+   834 ;;Total ram usage:        2 bytes
+   835 ;; Hardware stack levels used: 1
+   836 ;; Hardware stack levels required when called: 1
+   837 ;; This function calls:
+   838 ;;		_Secuencia01
+   839 ;;		_Secuencia02
+   840 ;;		_Secuencia03
+   841 ;;		_Secuencia04
+   842 ;;		_Secuencia05
+   843 ;;		_Secuencia06
+   844 ;;		_Secuencia07
+   845 ;;		_Secuencia08
+   846 ;;		_Secuencia09
+   847 ;; This function is called by:
+   848 ;;		_main
+   849 ;; This function uses a non-reentrant model
+   850 ;;
+   851                           
+   852     06B7                     _secuP5:	
+   853                           ;psect for function _secuP5
+   854                           
+   855     06B7                     l1633:	
+   856                           ;incstack = 0
+   857                           ; Regs used in _secuP5: [wreg-fsr0h+status,2+status,0+pclath+cstack]
+   858                           
+   859                           
+   860                           ;main.c: 150:     TRISC = 0x00;
+   861     06B7  0021               	movlb	1	; select bank1
+   862     06B8  018E               	clrf	14	;volatile
+   863                           
+   864                           ;main.c: 151:     ANSELB = 0x00;
+   865     06B9  0023               	movlb	3	; select bank3
+   866     06BA  018D               	clrf	13	;volatile
+   867     06BB                     l1635:
+   868                           
+   869                           ;main.c: 152:     TRISB = 0xFF;
+   870     06BB  30FF               	movlw	255
+   871     06BC  0021               	movlb	1	; select bank1
+   872     06BD  008D               	movwf	13	;volatile
+   873                           
+   874                           ;main.c: 154:     val_sec = (PORTB & 0xF0);
+   875     06BE  0020               	movlb	0	; select bank0
+   876     06BF  080D               	movf	13,w	;volatile
+   877     06C0  39F0               	andlw	240
+   878     06C1  00FC               	movwf	??_secuP5
+   879     06C2  01FD               	clrf	??_secuP5+1
+   880     06C3  087C               	movf	??_secuP5,w
+   881     06C4  00AB               	movwf	_val_sec
+   882     06C5  087D               	movf	??_secuP5+1,w
+   883     06C6  00AC               	movwf	_val_sec+1
+   884                           
+   885                           ;main.c: 156:     switch (val_sec) {
+   886     06C7  2EEC               	goto	l1657
+   887     06C8                     l1637:
+   888     06C8  3185  2598  3186   	fcall	_Secuencia01
+   889                           
+   890                           ;main.c: 158:             break;
+   891     06CB  2F0E               	goto	l1659
+   892     06CC                     l1639:
+   893     06CC  3185  25B5  3186   	fcall	_Secuencia02
+   894                           
+   895                           ;main.c: 160:             break;
+   896     06CF  2F0E               	goto	l1659
+   897     06D0                     l1641:
+   898     06D0  3186  2645  3186   	fcall	_Secuencia03
+   899                           
+   900                           ;main.c: 162:             break;
+   901     06D3  2F0E               	goto	l1659
+   902     06D4                     l1643:
+   903     06D4  3186  267E  3186   	fcall	_Secuencia04
+   904                           
+   905                           ;main.c: 164:             break;
+   906     06D7  2F0E               	goto	l1659
+   907     06D8                     l1645:
+   908     06D8  3185  25D2  3186   	fcall	_Secuencia05
+   909                           
+   910                           ;main.c: 166:             break;
+   911     06DB  2F0E               	goto	l1659
+   912     06DC                     l1647:
+   913     06DC  3185  25EF  3186   	fcall	_Secuencia06
+   914                           
+   915                           ;main.c: 168:             break;
+   916     06DF  2F0E               	goto	l1659
+   917     06E0                     l1649:
+   918     06E0  3186  261A  3186   	fcall	_Secuencia07
+   919                           
+   920                           ;main.c: 170:             break;
+   921     06E3  2F0E               	goto	l1659
+   922     06E4                     l1651:
+   923     06E4  3187  271A  3186   	fcall	_Secuencia08
+   924                           
+   925                           ;main.c: 172:             break;
+   926     06E7  2F0E               	goto	l1659
+   927     06E8                     l1653:
+   928     06E8  3185  2589  3186   	fcall	_Secuencia09
+   929                           
+   930                           ;main.c: 174:             break;
+   931     06EB  2F0E               	goto	l1659
+   932     06EC                     l1657:
+   933                           
+   934                           ; Switch on 2 bytes has been partitioned into a top level switch of size 1, and 1 sub-sw
+      +                          itches
+   935                           ; Switch size 1, requested type "simple"
+   936                           ; Number of cases is 1, Range of values is 0 to 0
+   937                           ; switch strategies available:
+   938                           ; Name         Instructions Cycles
+   939                           ; simple_byte            4     3 (average)
+   940                           ; direct_byte            8     6 (fixed)
+   941                           ; jumptable            260     6 (fixed)
+   942                           ;	Chosen strategy is simple_byte
+   943     06EC  082C               	movf	_val_sec+1,w
+   944     06ED  3A00               	xorlw	0	; case 0
+   945     06EE  1903               	skipnz
+   946     06EF  2EF1               	goto	l2093
+   947     06F0  2F0E               	goto	l1659
+   948     06F1                     l2093:
+   949                           
+   950                           ; Switch size 1, requested type "simple"
+   951                           ; Number of cases is 9, Range of values is 1 to 9
+   952                           ; switch strategies available:
+   953                           ; Name         Instructions Cycles
+   954                           ; direct_byte           27     9 (fixed)
+   955                           ; simple_byte           28    15 (average)
+   956                           ; jumptable            263     9 (fixed)
+   957                           ;	Chosen strategy is simple_byte
+   958     06F1  082B               	movf	_val_sec,w
+   959     06F2  3A01               	xorlw	1	; case 1
+   960     06F3  1903               	skipnz
+   961     06F4  2EC8               	goto	l1637
+   962     06F5  3A03               	xorlw	3	; case 2
+   963     06F6  1903               	skipnz
+   964     06F7  2ECC               	goto	l1639
+   965     06F8  3A01               	xorlw	1	; case 3
+   966     06F9  1903               	skipnz
+   967     06FA  2ED0               	goto	l1641
+   968     06FB  3A07               	xorlw	7	; case 4
+   969     06FC  1903               	skipnz
+   970     06FD  2ED4               	goto	l1643
+   971     06FE  3A01               	xorlw	1	; case 5
+   972     06FF  1903               	skipnz
+   973     0700  2ED8               	goto	l1645
+   974     0701  3A03               	xorlw	3	; case 6
+   975     0702  1903               	skipnz
+   976     0703  2EDC               	goto	l1647
+   977     0704  3A01               	xorlw	1	; case 7
+   978     0705  1903               	skipnz
+   979     0706  2EE0               	goto	l1649
+   980     0707  3A0F               	xorlw	15	; case 8
+   981     0708  1903               	skipnz
+   982     0709  2EE4               	goto	l1651
+   983     070A  3A01               	xorlw	1	; case 9
+   984     070B  1903               	skipnz
+   985     070C  2EE8               	goto	l1653
+   986     070D  2F0E               	goto	l1659
+   987     070E                     l1659:
+   988                           
+   989                           ;main.c: 178:     _delay((unsigned long)((100)*(20000000UL/4000.0)));
+   990     070E  3003               	movlw	3
+   991     070F  00FD               	movwf	??_secuP5+1
+   992     0710  308A               	movlw	138
+   993     0711  00FC               	movwf	??_secuP5
+   994     0712  3056               	movlw	86
+   995     0713                     u1437:
+   996     0713  0B89               	decfsz	9,f
+   997     0714  2F13               	goto	u1437
+   998     0715  0BFC               	decfsz	??_secuP5,f
+   999     0716  2F13               	goto	u1437
+  1000     0717  0BFD               	decfsz	??_secuP5+1,f
+  1001     0718  2F13               	goto	u1437
+  1002     0719                     l206:
+  1003     0719  0008               	return
+  1004     071A                     __end_of_secuP5:
+  1005                           
+  1006                           	psect	text2
+  1007     0589                     __ptext2:	
+  1008 ;; *************** function _Secuencia09 *****************
+  1009 ;; Defined at:
+  1010 ;;		line 147 in file "config.c"
+  1011 ;; Parameters:    Size  Location     Type
+  1012 ;;		None
+  1013 ;; Auto vars:     Size  Location     Type
+  1014 ;;		None
+  1015 ;; Return value:  Size  Location     Type
+  1016 ;;                  1    wreg      void 
+  1017 ;; Registers used:
+  1018 ;;		wreg
+  1019 ;; Tracked objects:
+  1020 ;;		On entry : 0/0
+  1021 ;;		On exit  : 0/0
+  1022 ;;		Unchanged: 0/0
+  1023 ;; Data sizes:     COMMON   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7   BANK8   BANK9  BANK10  BANK1
+      +1  BANK12
+  1024 ;;      Params:         0       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0
+  1025 ;;      Locals:         0       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0
+  1026 ;;      Temps:          2       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0
+  1027 ;;      Totals:         2       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0
+  1028 ;;Total ram usage:        2 bytes
+  1029 ;; Hardware stack levels used: 1
+  1030 ;; This function calls:
+  1031 ;;		Nothing
+  1032 ;; This function is called by:
+  1033 ;;		_secuP5
+  1034 ;; This function uses a non-reentrant model
+  1035 ;;
+  1036                           
+  1037     0589                     _Secuencia09:	
+  1038                           ;psect for function _Secuencia09
+  1039                           
+  1040     0589                     l1621:	
+  1041                           ;incstack = 0
+  1042                           ; Regs used in _Secuencia09: [wreg]
+  1043                           
+  1044                           
+  1045                           ;config.c: 148:     _delay((unsigned long)((200)*(20000000UL/4000.0)));
+  1046     0589  3006               	movlw	6
+  1047     058A  00FB               	movwf	??_Secuencia09+1
+  1048     058B  3013               	movlw	19
+  1049     058C  00FA               	movwf	??_Secuencia09
+  1050     058D  30AE               	movlw	174
+  1051     058E                     u1447:
+  1052     058E  0B89               	decfsz	9,f
+  1053     058F  2D8E               	goto	u1447
+  1054     0590  0BFA               	decfsz	??_Secuencia09,f
+  1055     0591  2D8E               	goto	u1447
+  1056     0592  0BFB               	decfsz	??_Secuencia09+1,f
+  1057     0593  2D8E               	goto	u1447
+  1058                           
+  1059                           ;config.c: 149:     LATC = 0xFF;
+  1060     0594  30FF               	movlw	255
+  1061     0595  0022               	movlb	2	; select bank2
+  1062     0596  008E               	movwf	14	;volatile
+  1063     0597                     l31:
+  1064     0597  0008               	return
+  1065     0598                     __end_of_Secuencia09:
+  1066                           
+  1067                           	psect	text3
+  1068     071A                     __ptext3:	
+  1069 ;; *************** function _Secuencia08 *****************
+  1070 ;; Defined at:
+  1071 ;;		line 100 in file "config.c"
+  1072 ;; Parameters:    Size  Location     Type
+  1073 ;;		None
+  1074 ;; Auto vars:     Size  Location     Type
+  1075 ;;		None
+  1076 ;; Return value:  Size  Location     Type
+  1077 ;;                  1    wreg      void 
+  1078 ;; Registers used:
+  1079 ;;		wreg
+  1080 ;; Tracked objects:
+  1081 ;;		On entry : 0/0
+  1082 ;;		On exit  : 0/0
+  1083 ;;		Unchanged: 0/0
+  1084 ;; Data sizes:     COMMON   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7   BANK8   BANK9  BANK10  BANK1
+      +1  BANK12
+  1085 ;;      Params:         0       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0
+  1086 ;;      Locals:         0       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0
+  1087 ;;      Temps:          2       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0
+  1088 ;;      Totals:         2       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0
+  1089 ;;Total ram usage:        2 bytes
+  1090 ;; Hardware stack levels used: 1
+  1091 ;; This function calls:
+  1092 ;;		Nothing
+  1093 ;; This function is called by:
+  1094 ;;		_secuP5
+  1095 ;; This function uses a non-reentrant model
+  1096 ;;
+  1097                           
+  1098     071A                     _Secuencia08:	
+  1099                           ;psect for function _Secuencia08
+  1100                           
+  1101     071A                     l1619:	
+  1102                           ;incstack = 0
+  1103                           ; Regs used in _Secuencia08: [wreg]
+  1104                           
+  1105                           
+  1106                           ;config.c: 101:     LATC = 0b00000001;
+  1107     071A  3001               	movlw	1
+  1108     071B  0022               	movlb	2	; select bank2
+  1109     071C  008E               	movwf	14	;volatile
+  1110                           
+  1111                           ;config.c: 102:     _delay((unsigned long)((200)*(20000000UL/4000.0)));
+  1112     071D  3006               	movlw	6
+  1113     071E  00FB               	movwf	??_Secuencia08+1
+  1114     071F  3013               	movlw	19
+  1115     0720  00FA               	movwf	??_Secuencia08
+  1116     0721  30AE               	movlw	174
+  1117     0722                     u1457:
+  1118     0722  0B89               	decfsz	9,f
+  1119     0723  2F22               	goto	u1457
+  1120     0724  0BFA               	decfsz	??_Secuencia08,f
+  1121     0725  2F22               	goto	u1457
+  1122     0726  0BFB               	decfsz	??_Secuencia08+1,f
+  1123     0727  2F22               	goto	u1457
+  1124                           
+  1125                           ;config.c: 104:     LATC = 0b00000010;
+  1126     0728  3002               	movlw	2
+  1127     0729  0022               	movlb	2	; select bank2
+  1128     072A  008E               	movwf	14	;volatile
+  1129                           
+  1130                           ;config.c: 105:     _delay((unsigned long)((200)*(20000000UL/4000.0)));
+  1131     072B  3006               	movlw	6
+  1132     072C  00FB               	movwf	??_Secuencia08+1
+  1133     072D  3013               	movlw	19
+  1134     072E  00FA               	movwf	??_Secuencia08
+  1135     072F  30AE               	movlw	174
+  1136     0730                     u1467:
+  1137     0730  0B89               	decfsz	9,f
+  1138     0731  2F30               	goto	u1467
+  1139     0732  0BFA               	decfsz	??_Secuencia08,f
+  1140     0733  2F30               	goto	u1467
+  1141     0734  0BFB               	decfsz	??_Secuencia08+1,f
+  1142     0735  2F30               	goto	u1467
+  1143                           
+  1144                           ;config.c: 107:     LATC = 0b00000100;
+  1145     0736  3004               	movlw	4
+  1146     0737  0022               	movlb	2	; select bank2
+  1147     0738  008E               	movwf	14	;volatile
+  1148                           
+  1149                           ;config.c: 108:     _delay((unsigned long)((200)*(20000000UL/4000.0)));
+  1150     0739  3006               	movlw	6
+  1151     073A  00FB               	movwf	??_Secuencia08+1
+  1152     073B  3013               	movlw	19
+  1153     073C  00FA               	movwf	??_Secuencia08
+  1154     073D  30AE               	movlw	174
+  1155     073E                     u1477:
+  1156     073E  0B89               	decfsz	9,f
+  1157     073F  2F3E               	goto	u1477
+  1158     0740  0BFA               	decfsz	??_Secuencia08,f
+  1159     0741  2F3E               	goto	u1477
+  1160     0742  0BFB               	decfsz	??_Secuencia08+1,f
+  1161     0743  2F3E               	goto	u1477
+  1162                           
+  1163                           ;config.c: 110:     LATC = 0b00001000;
+  1164     0744  3008               	movlw	8
+  1165     0745  0022               	movlb	2	; select bank2
+  1166     0746  008E               	movwf	14	;volatile
+  1167                           
+  1168                           ;config.c: 111:     _delay((unsigned long)((200)*(20000000UL/4000.0)));
+  1169     0747  3006               	movlw	6
+  1170     0748  00FB               	movwf	??_Secuencia08+1
+  1171     0749  3013               	movlw	19
+  1172     074A  00FA               	movwf	??_Secuencia08
+  1173     074B  30AE               	movlw	174
+  1174     074C                     u1487:
+  1175     074C  0B89               	decfsz	9,f
+  1176     074D  2F4C               	goto	u1487
+  1177     074E  0BFA               	decfsz	??_Secuencia08,f
+  1178     074F  2F4C               	goto	u1487
+  1179     0750  0BFB               	decfsz	??_Secuencia08+1,f
+  1180     0751  2F4C               	goto	u1487
+  1181                           
+  1182                           ;config.c: 113:     LATC = 0b00010000;
+  1183     0752  3010               	movlw	16
+  1184     0753  0022               	movlb	2	; select bank2
+  1185     0754  008E               	movwf	14	;volatile
+  1186                           
+  1187                           ;config.c: 114:     _delay((unsigned long)((200)*(20000000UL/4000.0)));
+  1188     0755  3006               	movlw	6
+  1189     0756  00FB               	movwf	??_Secuencia08+1
+  1190     0757  3013               	movlw	19
+  1191     0758  00FA               	movwf	??_Secuencia08
+  1192     0759  30AE               	movlw	174
+  1193     075A                     u1497:
+  1194     075A  0B89               	decfsz	9,f
+  1195     075B  2F5A               	goto	u1497
+  1196     075C  0BFA               	decfsz	??_Secuencia08,f
+  1197     075D  2F5A               	goto	u1497
+  1198     075E  0BFB               	decfsz	??_Secuencia08+1,f
+  1199     075F  2F5A               	goto	u1497
+  1200                           
+  1201                           ;config.c: 116:     LATC = 0b00100000;
+  1202     0760  3020               	movlw	32
+  1203     0761  0022               	movlb	2	; select bank2
+  1204     0762  008E               	movwf	14	;volatile
+  1205                           
+  1206                           ;config.c: 117:     _delay((unsigned long)((200)*(20000000UL/4000.0)));
+  1207     0763  3006               	movlw	6
+  1208     0764  00FB               	movwf	??_Secuencia08+1
+  1209     0765  3013               	movlw	19
+  1210     0766  00FA               	movwf	??_Secuencia08
+  1211     0767  30AE               	movlw	174
+  1212     0768                     u1507:
+  1213     0768  0B89               	decfsz	9,f
+  1214     0769  2F68               	goto	u1507
+  1215     076A  0BFA               	decfsz	??_Secuencia08,f
+  1216     076B  2F68               	goto	u1507
+  1217     076C  0BFB               	decfsz	??_Secuencia08+1,f
+  1218     076D  2F68               	goto	u1507
+  1219                           
+  1220                           ;config.c: 119:     LATC = 0b01000000;
+  1221     076E  3040               	movlw	64
+  1222     076F  0022               	movlb	2	; select bank2
+  1223     0770  008E               	movwf	14	;volatile
+  1224                           
+  1225                           ;config.c: 120:     _delay((unsigned long)((200)*(20000000UL/4000.0)));
+  1226     0771  3006               	movlw	6
+  1227     0772  00FB               	movwf	??_Secuencia08+1
+  1228     0773  3013               	movlw	19
+  1229     0774  00FA               	movwf	??_Secuencia08
+  1230     0775  30AE               	movlw	174
+  1231     0776                     u1517:
+  1232     0776  0B89               	decfsz	9,f
+  1233     0777  2F76               	goto	u1517
+  1234     0778  0BFA               	decfsz	??_Secuencia08,f
+  1235     0779  2F76               	goto	u1517
+  1236     077A  0BFB               	decfsz	??_Secuencia08+1,f
+  1237     077B  2F76               	goto	u1517
+  1238                           
+  1239                           ;config.c: 122:     LATC = 0b10000000;
+  1240     077C  3080               	movlw	128
+  1241     077D  0022               	movlb	2	; select bank2
+  1242     077E  008E               	movwf	14	;volatile
+  1243                           
+  1244                           ;config.c: 123:     _delay((unsigned long)((200)*(20000000UL/4000.0)));
+  1245     077F  3006               	movlw	6
+  1246     0780  00FB               	movwf	??_Secuencia08+1
+  1247     0781  3013               	movlw	19
+  1248     0782  00FA               	movwf	??_Secuencia08
+  1249     0783  30AE               	movlw	174
+  1250     0784                     u1527:
+  1251     0784  0B89               	decfsz	9,f
+  1252     0785  2F84               	goto	u1527
+  1253     0786  0BFA               	decfsz	??_Secuencia08,f
+  1254     0787  2F84               	goto	u1527
+  1255     0788  0BFB               	decfsz	??_Secuencia08+1,f
+  1256     0789  2F84               	goto	u1527
+  1257                           
+  1258                           ;config.c: 125:     LATC = 0b01000000;
+  1259     078A  3040               	movlw	64
+  1260     078B  0022               	movlb	2	; select bank2
+  1261     078C  008E               	movwf	14	;volatile
+  1262                           
+  1263                           ;config.c: 126:     _delay((unsigned long)((200)*(20000000UL/4000.0)));
+  1264     078D  3006               	movlw	6
+  1265     078E  00FB               	movwf	??_Secuencia08+1
+  1266     078F  3013               	movlw	19
+  1267     0790  00FA               	movwf	??_Secuencia08
+  1268     0791  30AE               	movlw	174
+  1269     0792                     u1537:
+  1270     0792  0B89               	decfsz	9,f
+  1271     0793  2F92               	goto	u1537
+  1272     0794  0BFA               	decfsz	??_Secuencia08,f
+  1273     0795  2F92               	goto	u1537
+  1274     0796  0BFB               	decfsz	??_Secuencia08+1,f
+  1275     0797  2F92               	goto	u1537
+  1276                           
+  1277                           ;config.c: 128:     LATC = 0b00100000;
+  1278     0798  3020               	movlw	32
+  1279     0799  0022               	movlb	2	; select bank2
+  1280     079A  008E               	movwf	14	;volatile
+  1281                           
+  1282                           ;config.c: 129:     _delay((unsigned long)((200)*(20000000UL/4000.0)));
+  1283     079B  3006               	movlw	6
+  1284     079C  00FB               	movwf	??_Secuencia08+1
+  1285     079D  3013               	movlw	19
+  1286     079E  00FA               	movwf	??_Secuencia08
+  1287     079F  30AE               	movlw	174
+  1288     07A0                     u1547:
+  1289     07A0  0B89               	decfsz	9,f
+  1290     07A1  2FA0               	goto	u1547
+  1291     07A2  0BFA               	decfsz	??_Secuencia08,f
+  1292     07A3  2FA0               	goto	u1547
+  1293     07A4  0BFB               	decfsz	??_Secuencia08+1,f
+  1294     07A5  2FA0               	goto	u1547
+  1295                           
+  1296                           ;config.c: 131:     LATC = 0b00010000;
+  1297     07A6  3010               	movlw	16
+  1298     07A7  0022               	movlb	2	; select bank2
+  1299     07A8  008E               	movwf	14	;volatile
+  1300                           
+  1301                           ;config.c: 132:     _delay((unsigned long)((200)*(20000000UL/4000.0)));
+  1302     07A9  3006               	movlw	6
+  1303     07AA  00FB               	movwf	??_Secuencia08+1
+  1304     07AB  3013               	movlw	19
+  1305     07AC  00FA               	movwf	??_Secuencia08
+  1306     07AD  30AE               	movlw	174
+  1307     07AE                     u1557:
+  1308     07AE  0B89               	decfsz	9,f
+  1309     07AF  2FAE               	goto	u1557
+  1310     07B0  0BFA               	decfsz	??_Secuencia08,f
+  1311     07B1  2FAE               	goto	u1557
+  1312     07B2  0BFB               	decfsz	??_Secuencia08+1,f
+  1313     07B3  2FAE               	goto	u1557
+  1314                           
+  1315                           ;config.c: 134:     LATC = 0b00001000;
+  1316     07B4  3008               	movlw	8
+  1317     07B5  0022               	movlb	2	; select bank2
+  1318     07B6  008E               	movwf	14	;volatile
+  1319                           
+  1320                           ;config.c: 135:     _delay((unsigned long)((200)*(20000000UL/4000.0)));
+  1321     07B7  3006               	movlw	6
+  1322     07B8  00FB               	movwf	??_Secuencia08+1
+  1323     07B9  3013               	movlw	19
+  1324     07BA  00FA               	movwf	??_Secuencia08
+  1325     07BB  30AE               	movlw	174
+  1326     07BC                     u1567:
+  1327     07BC  0B89               	decfsz	9,f
+  1328     07BD  2FBC               	goto	u1567
+  1329     07BE  0BFA               	decfsz	??_Secuencia08,f
+  1330     07BF  2FBC               	goto	u1567
+  1331     07C0  0BFB               	decfsz	??_Secuencia08+1,f
+  1332     07C1  2FBC               	goto	u1567
+  1333                           
+  1334                           ;config.c: 137:     LATC = 0b00000100;
+  1335     07C2  3004               	movlw	4
+  1336     07C3  0022               	movlb	2	; select bank2
+  1337     07C4  008E               	movwf	14	;volatile
+  1338                           
+  1339                           ;config.c: 138:     _delay((unsigned long)((200)*(20000000UL/4000.0)));
+  1340     07C5  3006               	movlw	6
+  1341     07C6  00FB               	movwf	??_Secuencia08+1
+  1342     07C7  3013               	movlw	19
+  1343     07C8  00FA               	movwf	??_Secuencia08
+  1344     07C9  30AE               	movlw	174
+  1345     07CA                     u1577:
+  1346     07CA  0B89               	decfsz	9,f
+  1347     07CB  2FCA               	goto	u1577
+  1348     07CC  0BFA               	decfsz	??_Secuencia08,f
+  1349     07CD  2FCA               	goto	u1577
+  1350     07CE  0BFB               	decfsz	??_Secuencia08+1,f
+  1351     07CF  2FCA               	goto	u1577
+  1352                           
+  1353                           ;config.c: 140:     LATC = 0b00000010;
+  1354     07D0  3002               	movlw	2
+  1355     07D1  0022               	movlb	2	; select bank2
+  1356     07D2  008E               	movwf	14	;volatile
+  1357                           
+  1358                           ;config.c: 141:     _delay((unsigned long)((200)*(20000000UL/4000.0)));
+  1359     07D3  3006               	movlw	6
+  1360     07D4  00FB               	movwf	??_Secuencia08+1
+  1361     07D5  3013               	movlw	19
+  1362     07D6  00FA               	movwf	??_Secuencia08
+  1363     07D7  30AE               	movlw	174
+  1364     07D8                     u1587:
+  1365     07D8  0B89               	decfsz	9,f
+  1366     07D9  2FD8               	goto	u1587
+  1367     07DA  0BFA               	decfsz	??_Secuencia08,f
+  1368     07DB  2FD8               	goto	u1587
+  1369     07DC  0BFB               	decfsz	??_Secuencia08+1,f
+  1370     07DD  2FD8               	goto	u1587
+  1371                           
+  1372                           ;config.c: 143:     LATC = 0b00000001;
+  1373     07DE  3001               	movlw	1
+  1374     07DF  0022               	movlb	2	; select bank2
+  1375     07E0  008E               	movwf	14	;volatile
+  1376                           
+  1377                           ;config.c: 144:     _delay((unsigned long)((200)*(20000000UL/4000.0)));
+  1378     07E1  3006               	movlw	6
+  1379     07E2  00FB               	movwf	??_Secuencia08+1
+  1380     07E3  3013               	movlw	19
+  1381     07E4  00FA               	movwf	??_Secuencia08
+  1382     07E5  30AE               	movlw	174
+  1383     07E6                     u1597:
+  1384     07E6  0B89               	decfsz	9,f
+  1385     07E7  2FE6               	goto	u1597
+  1386     07E8  0BFA               	decfsz	??_Secuencia08,f
+  1387     07E9  2FE6               	goto	u1597
+  1388     07EA  0BFB               	decfsz	??_Secuencia08+1,f
+  1389     07EB  2FE6               	goto	u1597
+  1390     07EC                     l28:
+  1391     07EC  0008               	return
+  1392     07ED                     __end_of_Secuencia08:
+  1393                           
+  1394                           	psect	text4
+  1395     061A                     __ptext4:	
+  1396 ;; *************** function _Secuencia07 *****************
+  1397 ;; Defined at:
+  1398 ;;		line 90 in file "config.c"
+  1399 ;; Parameters:    Size  Location     Type
+  1400 ;;		None
+  1401 ;; Auto vars:     Size  Location     Type
+  1402 ;;		None
+  1403 ;; Return value:  Size  Location     Type
+  1404 ;;                  1    wreg      void 
+  1405 ;; Registers used:
+  1406 ;;		wreg
+  1407 ;; Tracked objects:
+  1408 ;;		On entry : 0/0
+  1409 ;;		On exit  : 0/0
+  1410 ;;		Unchanged: 0/0
+  1411 ;; Data sizes:     COMMON   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7   BANK8   BANK9  BANK10  BANK1
+      +1  BANK12
+  1412 ;;      Params:         0       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0
+  1413 ;;      Locals:         0       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0
+  1414 ;;      Temps:          2       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0
+  1415 ;;      Totals:         2       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0
+  1416 ;;Total ram usage:        2 bytes
+  1417 ;; Hardware stack levels used: 1
+  1418 ;; This function calls:
+  1419 ;;		Nothing
+  1420 ;; This function is called by:
+  1421 ;;		_secuP5
+  1422 ;; This function uses a non-reentrant model
+  1423 ;;
+  1424                           
+  1425     061A                     _Secuencia07:	
+  1426                           ;psect for function _Secuencia07
+  1427                           
+  1428     061A                     l1617:	
+  1429                           ;incstack = 0
+  1430                           ; Regs used in _Secuencia07: [wreg]
+  1431                           
+  1432                           
+  1433                           ;config.c: 91:     LATC = 0b10000001;
+  1434     061A  3081               	movlw	129
+  1435     061B  0022               	movlb	2	; select bank2
+  1436     061C  008E               	movwf	14	;volatile
+  1437                           
+  1438                           ;config.c: 92:     _delay((unsigned long)((200)*(20000000UL/4000.0)));
+  1439     061D  3006               	movlw	6
+  1440     061E  00FB               	movwf	??_Secuencia07+1
+  1441     061F  3013               	movlw	19
+  1442     0620  00FA               	movwf	??_Secuencia07
+  1443     0621  30AE               	movlw	174
+  1444     0622                     u1607:
+  1445     0622  0B89               	decfsz	9,f
+  1446     0623  2E22               	goto	u1607
+  1447     0624  0BFA               	decfsz	??_Secuencia07,f
+  1448     0625  2E22               	goto	u1607
+  1449     0626  0BFB               	decfsz	??_Secuencia07+1,f
+  1450     0627  2E22               	goto	u1607
+  1451                           
+  1452                           ;config.c: 93:     LATC = 0b11000011;
+  1453     0628  30C3               	movlw	195
+  1454     0629  0022               	movlb	2	; select bank2
+  1455     062A  008E               	movwf	14	;volatile
+  1456                           
+  1457                           ;config.c: 94:     _delay((unsigned long)((200)*(20000000UL/4000.0)));
+  1458     062B  3006               	movlw	6
+  1459     062C  00FB               	movwf	??_Secuencia07+1
+  1460     062D  3013               	movlw	19
+  1461     062E  00FA               	movwf	??_Secuencia07
+  1462     062F  30AE               	movlw	174
+  1463     0630                     u1617:
+  1464     0630  0B89               	decfsz	9,f
+  1465     0631  2E30               	goto	u1617
+  1466     0632  0BFA               	decfsz	??_Secuencia07,f
+  1467     0633  2E30               	goto	u1617
+  1468     0634  0BFB               	decfsz	??_Secuencia07+1,f
+  1469     0635  2E30               	goto	u1617
+  1470                           
+  1471                           ;config.c: 95:     LATC = 0b11011011;
+  1472     0636  30DB               	movlw	219
+  1473     0637  0022               	movlb	2	; select bank2
+  1474     0638  008E               	movwf	14	;volatile
+  1475                           
+  1476                           ;config.c: 96:     _delay((unsigned long)((200)*(20000000UL/4000.0)));
+  1477     0639  3006               	movlw	6
+  1478     063A  00FB               	movwf	??_Secuencia07+1
+  1479     063B  3013               	movlw	19
+  1480     063C  00FA               	movwf	??_Secuencia07
+  1481     063D  30AE               	movlw	174
+  1482     063E                     u1627:
+  1483     063E  0B89               	decfsz	9,f
+  1484     063F  2E3E               	goto	u1627
+  1485     0640  0BFA               	decfsz	??_Secuencia07,f
+  1486     0641  2E3E               	goto	u1627
+  1487     0642  0BFB               	decfsz	??_Secuencia07+1,f
+  1488     0643  2E3E               	goto	u1627
+  1489     0644                     l25:
+  1490     0644  0008               	return
+  1491     0645                     __end_of_Secuencia07:
+  1492                           
+  1493                           	psect	text5
+  1494     05EF                     __ptext5:	
+  1495 ;; *************** function _Secuencia06 *****************
+  1496 ;; Defined at:
+  1497 ;;		line 80 in file "config.c"
+  1498 ;; Parameters:    Size  Location     Type
+  1499 ;;		None
+  1500 ;; Auto vars:     Size  Location     Type
+  1501 ;;		None
+  1502 ;; Return value:  Size  Location     Type
+  1503 ;;                  1    wreg      void 
+  1504 ;; Registers used:
+  1505 ;;		wreg
+  1506 ;; Tracked objects:
+  1507 ;;		On entry : 0/0
+  1508 ;;		On exit  : 0/0
+  1509 ;;		Unchanged: 0/0
+  1510 ;; Data sizes:     COMMON   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7   BANK8   BANK9  BANK10  BANK1
+      +1  BANK12
+  1511 ;;      Params:         0       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0
+  1512 ;;      Locals:         0       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0
+  1513 ;;      Temps:          2       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0
+  1514 ;;      Totals:         2       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0
+  1515 ;;Total ram usage:        2 bytes
+  1516 ;; Hardware stack levels used: 1
+  1517 ;; This function calls:
+  1518 ;;		Nothing
+  1519 ;; This function is called by:
+  1520 ;;		_secuP5
+  1521 ;; This function uses a non-reentrant model
+  1522 ;;
+  1523                           
+  1524     05EF                     _Secuencia06:	
+  1525                           ;psect for function _Secuencia06
+  1526                           
+  1527     05EF                     l1615:	
+  1528                           ;incstack = 0
+  1529                           ; Regs used in _Secuencia06: [wreg]
+  1530                           
+  1531                           
+  1532                           ;config.c: 81:     LATC = 0xF0;
+  1533     05EF  30F0               	movlw	240
+  1534     05F0  0022               	movlb	2	; select bank2
+  1535     05F1  008E               	movwf	14	;volatile
+  1536                           
+  1537                           ;config.c: 82:     _delay((unsigned long)((200)*(20000000UL/4000.0)));
+  1538     05F2  3006               	movlw	6
+  1539     05F3  00FB               	movwf	??_Secuencia06+1
+  1540     05F4  3013               	movlw	19
+  1541     05F5  00FA               	movwf	??_Secuencia06
+  1542     05F6  30AE               	movlw	174
+  1543     05F7                     u1637:
+  1544     05F7  0B89               	decfsz	9,f
+  1545     05F8  2DF7               	goto	u1637
+  1546     05F9  0BFA               	decfsz	??_Secuencia06,f
+  1547     05FA  2DF7               	goto	u1637
+  1548     05FB  0BFB               	decfsz	??_Secuencia06+1,f
+  1549     05FC  2DF7               	goto	u1637
+  1550                           
+  1551                           ;config.c: 83:     LATC = 0xFF;
+  1552     05FD  30FF               	movlw	255
+  1553     05FE  0022               	movlb	2	; select bank2
+  1554     05FF  008E               	movwf	14	;volatile
+  1555                           
+  1556                           ;config.c: 84:     _delay((unsigned long)((200)*(20000000UL/4000.0)));
+  1557     0600  3006               	movlw	6
+  1558     0601  00FB               	movwf	??_Secuencia06+1
+  1559     0602  3013               	movlw	19
+  1560     0603  00FA               	movwf	??_Secuencia06
+  1561     0604  30AE               	movlw	174
+  1562     0605                     u1647:
+  1563     0605  0B89               	decfsz	9,f
+  1564     0606  2E05               	goto	u1647
+  1565     0607  0BFA               	decfsz	??_Secuencia06,f
+  1566     0608  2E05               	goto	u1647
+  1567     0609  0BFB               	decfsz	??_Secuencia06+1,f
+  1568     060A  2E05               	goto	u1647
+  1569                           
+  1570                           ;config.c: 85:     LATC = 0x0F;
+  1571     060B  300F               	movlw	15
+  1572     060C  0022               	movlb	2	; select bank2
+  1573     060D  008E               	movwf	14	;volatile
+  1574                           
+  1575                           ;config.c: 86:     _delay((unsigned long)((200)*(20000000UL/4000.0)));
+  1576     060E  3006               	movlw	6
+  1577     060F  00FB               	movwf	??_Secuencia06+1
+  1578     0610  3013               	movlw	19
+  1579     0611  00FA               	movwf	??_Secuencia06
+  1580     0612  30AE               	movlw	174
+  1581     0613                     u1657:
+  1582     0613  0B89               	decfsz	9,f
+  1583     0614  2E13               	goto	u1657
+  1584     0615  0BFA               	decfsz	??_Secuencia06,f
+  1585     0616  2E13               	goto	u1657
+  1586     0617  0BFB               	decfsz	??_Secuencia06+1,f
+  1587     0618  2E13               	goto	u1657
+  1588     0619                     l22:
+  1589     0619  0008               	return
+  1590     061A                     __end_of_Secuencia06:
+  1591                           
+  1592                           	psect	text6
+  1593     05D2                     __ptext6:	
+  1594 ;; *************** function _Secuencia05 *****************
+  1595 ;; Defined at:
+  1596 ;;		line 72 in file "config.c"
+  1597 ;; Parameters:    Size  Location     Type
+  1598 ;;		None
+  1599 ;; Auto vars:     Size  Location     Type
+  1600 ;;		None
+  1601 ;; Return value:  Size  Location     Type
+  1602 ;;                  1    wreg      void 
+  1603 ;; Registers used:
+  1604 ;;		wreg
+  1605 ;; Tracked objects:
+  1606 ;;		On entry : 0/0
+  1607 ;;		On exit  : 0/0
+  1608 ;;		Unchanged: 0/0
+  1609 ;; Data sizes:     COMMON   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7   BANK8   BANK9  BANK10  BANK1
+      +1  BANK12
+  1610 ;;      Params:         0       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0
+  1611 ;;      Locals:         0       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0
+  1612 ;;      Temps:          2       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0
+  1613 ;;      Totals:         2       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0
+  1614 ;;Total ram usage:        2 bytes
+  1615 ;; Hardware stack levels used: 1
+  1616 ;; This function calls:
+  1617 ;;		Nothing
+  1618 ;; This function is called by:
+  1619 ;;		_secuP5
+  1620 ;; This function uses a non-reentrant model
+  1621 ;;
+  1622                           
+  1623     05D2                     _Secuencia05:	
+  1624                           ;psect for function _Secuencia05
+  1625                           
+  1626     05D2                     l1613:	
+  1627                           ;incstack = 0
+  1628                           ; Regs used in _Secuencia05: [wreg]
+  1629                           
+  1630                           
+  1631                           ;config.c: 73:     LATC = 0xFF;
+  1632     05D2  30FF               	movlw	255
+  1633     05D3  0022               	movlb	2	; select bank2
+  1634     05D4  008E               	movwf	14	;volatile
+  1635                           
+  1636                           ;config.c: 74:     _delay((unsigned long)((200)*(20000000UL/4000.0)));
+  1637     05D5  3006               	movlw	6
+  1638     05D6  00FB               	movwf	??_Secuencia05+1
+  1639     05D7  3013               	movlw	19
+  1640     05D8  00FA               	movwf	??_Secuencia05
+  1641     05D9  30AE               	movlw	174
+  1642     05DA                     u1667:
+  1643     05DA  0B89               	decfsz	9,f
+  1644     05DB  2DDA               	goto	u1667
+  1645     05DC  0BFA               	decfsz	??_Secuencia05,f
+  1646     05DD  2DDA               	goto	u1667
+  1647     05DE  0BFB               	decfsz	??_Secuencia05+1,f
+  1648     05DF  2DDA               	goto	u1667
+  1649                           
+  1650                           ;config.c: 75:     LATC = 0x0F;
+  1651     05E0  300F               	movlw	15
+  1652     05E1  0022               	movlb	2	; select bank2
+  1653     05E2  008E               	movwf	14	;volatile
+  1654                           
+  1655                           ;config.c: 76:     _delay((unsigned long)((200)*(20000000UL/4000.0)));
+  1656     05E3  3006               	movlw	6
+  1657     05E4  00FB               	movwf	??_Secuencia05+1
+  1658     05E5  3013               	movlw	19
+  1659     05E6  00FA               	movwf	??_Secuencia05
+  1660     05E7  30AE               	movlw	174
+  1661     05E8                     u1677:
+  1662     05E8  0B89               	decfsz	9,f
+  1663     05E9  2DE8               	goto	u1677
+  1664     05EA  0BFA               	decfsz	??_Secuencia05,f
+  1665     05EB  2DE8               	goto	u1677
+  1666     05EC  0BFB               	decfsz	??_Secuencia05+1,f
+  1667     05ED  2DE8               	goto	u1677
+  1668     05EE                     l19:
+  1669     05EE  0008               	return
+  1670     05EF                     __end_of_Secuencia05:
+  1671                           
+  1672                           	psect	text7
+  1673     067E                     __ptext7:	
+  1674 ;; *************** function _Secuencia04 *****************
+  1675 ;; Defined at:
+  1676 ;;		line 60 in file "config.c"
+  1677 ;; Parameters:    Size  Location     Type
+  1678 ;;		None
+  1679 ;; Auto vars:     Size  Location     Type
+  1680 ;;		None
+  1681 ;; Return value:  Size  Location     Type
+  1682 ;;                  1    wreg      void 
+  1683 ;; Registers used:
+  1684 ;;		wreg
+  1685 ;; Tracked objects:
+  1686 ;;		On entry : 0/0
+  1687 ;;		On exit  : 0/0
+  1688 ;;		Unchanged: 0/0
+  1689 ;; Data sizes:     COMMON   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7   BANK8   BANK9  BANK10  BANK1
+      +1  BANK12
+  1690 ;;      Params:         0       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0
+  1691 ;;      Locals:         0       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0
+  1692 ;;      Temps:          2       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0
+  1693 ;;      Totals:         2       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0
+  1694 ;;Total ram usage:        2 bytes
+  1695 ;; Hardware stack levels used: 1
+  1696 ;; This function calls:
+  1697 ;;		Nothing
+  1698 ;; This function is called by:
+  1699 ;;		_secuP5
+  1700 ;; This function uses a non-reentrant model
+  1701 ;;
+  1702                           
+  1703     067E                     _Secuencia04:	
+  1704                           ;psect for function _Secuencia04
+  1705                           
+  1706     067E                     l1611:	
+  1707                           ;incstack = 0
+  1708                           ; Regs used in _Secuencia04: [wreg]
+  1709                           
+  1710                           
+  1711                           ;config.c: 61:     LATC = 0b11111111;
+  1712     067E  30FF               	movlw	255
+  1713     067F  0022               	movlb	2	; select bank2
+  1714     0680  008E               	movwf	14	;volatile
+  1715                           
+  1716                           ;config.c: 62:     _delay((unsigned long)((200)*(20000000UL/4000.0)));
+  1717     0681  3006               	movlw	6
+  1718     0682  00FB               	movwf	??_Secuencia04+1
+  1719     0683  3013               	movlw	19
+  1720     0684  00FA               	movwf	??_Secuencia04
+  1721     0685  30AE               	movlw	174
+  1722     0686                     u1687:
+  1723     0686  0B89               	decfsz	9,f
+  1724     0687  2E86               	goto	u1687
+  1725     0688  0BFA               	decfsz	??_Secuencia04,f
+  1726     0689  2E86               	goto	u1687
+  1727     068A  0BFB               	decfsz	??_Secuencia04+1,f
+  1728     068B  2E86               	goto	u1687
+  1729                           
+  1730                           ;config.c: 63:     LATC = 0b11100111;
+  1731     068C  30E7               	movlw	231
+  1732     068D  0022               	movlb	2	; select bank2
+  1733     068E  008E               	movwf	14	;volatile
+  1734                           
+  1735                           ;config.c: 64:     _delay((unsigned long)((200)*(20000000UL/4000.0)));
+  1736     068F  3006               	movlw	6
+  1737     0690  00FB               	movwf	??_Secuencia04+1
+  1738     0691  3013               	movlw	19
+  1739     0692  00FA               	movwf	??_Secuencia04
+  1740     0693  30AE               	movlw	174
+  1741     0694                     u1697:
+  1742     0694  0B89               	decfsz	9,f
+  1743     0695  2E94               	goto	u1697
+  1744     0696  0BFA               	decfsz	??_Secuencia04,f
+  1745     0697  2E94               	goto	u1697
+  1746     0698  0BFB               	decfsz	??_Secuencia04+1,f
+  1747     0699  2E94               	goto	u1697
+  1748                           
+  1749                           ;config.c: 65:     LATC = 0b11000011;
+  1750     069A  30C3               	movlw	195
+  1751     069B  0022               	movlb	2	; select bank2
+  1752     069C  008E               	movwf	14	;volatile
+  1753                           
+  1754                           ;config.c: 66:     _delay((unsigned long)((200)*(20000000UL/4000.0)));
+  1755     069D  3006               	movlw	6
+  1756     069E  00FB               	movwf	??_Secuencia04+1
+  1757     069F  3013               	movlw	19
+  1758     06A0  00FA               	movwf	??_Secuencia04
+  1759     06A1  30AE               	movlw	174
+  1760     06A2                     u1707:
+  1761     06A2  0B89               	decfsz	9,f
+  1762     06A3  2EA2               	goto	u1707
+  1763     06A4  0BFA               	decfsz	??_Secuencia04,f
+  1764     06A5  2EA2               	goto	u1707
+  1765     06A6  0BFB               	decfsz	??_Secuencia04+1,f
+  1766     06A7  2EA2               	goto	u1707
+  1767                           
+  1768                           ;config.c: 67:     LATC = 0b10000001;
+  1769     06A8  3081               	movlw	129
+  1770     06A9  0022               	movlb	2	; select bank2
+  1771     06AA  008E               	movwf	14	;volatile
+  1772                           
+  1773                           ;config.c: 68:     _delay((unsigned long)((200)*(20000000UL/4000.0)));
+  1774     06AB  3006               	movlw	6
+  1775     06AC  00FB               	movwf	??_Secuencia04+1
+  1776     06AD  3013               	movlw	19
+  1777     06AE  00FA               	movwf	??_Secuencia04
+  1778     06AF  30AE               	movlw	174
+  1779     06B0                     u1717:
+  1780     06B0  0B89               	decfsz	9,f
+  1781     06B1  2EB0               	goto	u1717
+  1782     06B2  0BFA               	decfsz	??_Secuencia04,f
+  1783     06B3  2EB0               	goto	u1717
+  1784     06B4  0BFB               	decfsz	??_Secuencia04+1,f
+  1785     06B5  2EB0               	goto	u1717
+  1786     06B6                     l16:
+  1787     06B6  0008               	return
+  1788     06B7                     __end_of_Secuencia04:
+  1789                           
+  1790                           	psect	text8
+  1791     0645                     __ptext8:	
+  1792 ;; *************** function _Secuencia03 *****************
+  1793 ;; Defined at:
+  1794 ;;		line 48 in file "config.c"
+  1795 ;; Parameters:    Size  Location     Type
+  1796 ;;		None
+  1797 ;; Auto vars:     Size  Location     Type
+  1798 ;;		None
+  1799 ;; Return value:  Size  Location     Type
+  1800 ;;                  1    wreg      void 
+  1801 ;; Registers used:
+  1802 ;;		wreg
+  1803 ;; Tracked objects:
+  1804 ;;		On entry : 0/0
+  1805 ;;		On exit  : 0/0
+  1806 ;;		Unchanged: 0/0
+  1807 ;; Data sizes:     COMMON   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7   BANK8   BANK9  BANK10  BANK1
+      +1  BANK12
+  1808 ;;      Params:         0       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0
+  1809 ;;      Locals:         0       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0
+  1810 ;;      Temps:          2       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0
+  1811 ;;      Totals:         2       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0
+  1812 ;;Total ram usage:        2 bytes
+  1813 ;; Hardware stack levels used: 1
+  1814 ;; This function calls:
+  1815 ;;		Nothing
+  1816 ;; This function is called by:
+  1817 ;;		_secuP5
+  1818 ;; This function uses a non-reentrant model
+  1819 ;;
+  1820                           
+  1821     0645                     _Secuencia03:	
+  1822                           ;psect for function _Secuencia03
+  1823                           
+  1824     0645                     l1609:	
+  1825                           ;incstack = 0
+  1826                           ; Regs used in _Secuencia03: [wreg]
+  1827                           
+  1828                           
+  1829                           ;config.c: 49:     LATC = 0b10000001;
+  1830     0645  3081               	movlw	129
+  1831     0646  0022               	movlb	2	; select bank2
+  1832     0647  008E               	movwf	14	;volatile
+  1833                           
+  1834                           ;config.c: 50:     _delay((unsigned long)((200)*(20000000UL/4000.0)));
+  1835     0648  3006               	movlw	6
+  1836     0649  00FB               	movwf	??_Secuencia03+1
+  1837     064A  3013               	movlw	19
+  1838     064B  00FA               	movwf	??_Secuencia03
+  1839     064C  30AE               	movlw	174
+  1840     064D                     u1727:
+  1841     064D  0B89               	decfsz	9,f
+  1842     064E  2E4D               	goto	u1727
+  1843     064F  0BFA               	decfsz	??_Secuencia03,f
+  1844     0650  2E4D               	goto	u1727
+  1845     0651  0BFB               	decfsz	??_Secuencia03+1,f
+  1846     0652  2E4D               	goto	u1727
+  1847                           
+  1848                           ;config.c: 51:     LATC = 0b11000011;
+  1849     0653  30C3               	movlw	195
+  1850     0654  0022               	movlb	2	; select bank2
+  1851     0655  008E               	movwf	14	;volatile
+  1852                           
+  1853                           ;config.c: 52:     _delay((unsigned long)((200)*(20000000UL/4000.0)));
+  1854     0656  3006               	movlw	6
+  1855     0657  00FB               	movwf	??_Secuencia03+1
+  1856     0658  3013               	movlw	19
+  1857     0659  00FA               	movwf	??_Secuencia03
+  1858     065A  30AE               	movlw	174
+  1859     065B                     u1737:
+  1860     065B  0B89               	decfsz	9,f
+  1861     065C  2E5B               	goto	u1737
+  1862     065D  0BFA               	decfsz	??_Secuencia03,f
+  1863     065E  2E5B               	goto	u1737
+  1864     065F  0BFB               	decfsz	??_Secuencia03+1,f
+  1865     0660  2E5B               	goto	u1737
+  1866                           
+  1867                           ;config.c: 53:     LATC = 0b11100111;
+  1868     0661  30E7               	movlw	231
+  1869     0662  0022               	movlb	2	; select bank2
+  1870     0663  008E               	movwf	14	;volatile
+  1871                           
+  1872                           ;config.c: 54:     _delay((unsigned long)((200)*(20000000UL/4000.0)));
+  1873     0664  3006               	movlw	6
+  1874     0665  00FB               	movwf	??_Secuencia03+1
+  1875     0666  3013               	movlw	19
+  1876     0667  00FA               	movwf	??_Secuencia03
+  1877     0668  30AE               	movlw	174
+  1878     0669                     u1747:
+  1879     0669  0B89               	decfsz	9,f
+  1880     066A  2E69               	goto	u1747
+  1881     066B  0BFA               	decfsz	??_Secuencia03,f
+  1882     066C  2E69               	goto	u1747
+  1883     066D  0BFB               	decfsz	??_Secuencia03+1,f
+  1884     066E  2E69               	goto	u1747
+  1885                           
+  1886                           ;config.c: 55:     LATC = 0b11111111;
+  1887     066F  30FF               	movlw	255
+  1888     0670  0022               	movlb	2	; select bank2
+  1889     0671  008E               	movwf	14	;volatile
+  1890                           
+  1891                           ;config.c: 56:     _delay((unsigned long)((200)*(20000000UL/4000.0)));
+  1892     0672  3006               	movlw	6
+  1893     0673  00FB               	movwf	??_Secuencia03+1
+  1894     0674  3013               	movlw	19
+  1895     0675  00FA               	movwf	??_Secuencia03
+  1896     0676  30AE               	movlw	174
+  1897     0677                     u1757:
+  1898     0677  0B89               	decfsz	9,f
+  1899     0678  2E77               	goto	u1757
+  1900     0679  0BFA               	decfsz	??_Secuencia03,f
+  1901     067A  2E77               	goto	u1757
+  1902     067B  0BFB               	decfsz	??_Secuencia03+1,f
+  1903     067C  2E77               	goto	u1757
+  1904     067D                     l13:
+  1905     067D  0008               	return
+  1906     067E                     __end_of_Secuencia03:
+  1907                           
+  1908                           	psect	text9
+  1909     05B5                     __ptext9:	
+  1910 ;; *************** function _Secuencia02 *****************
+  1911 ;; Defined at:
+  1912 ;;		line 41 in file "config.c"
+  1913 ;; Parameters:    Size  Location     Type
+  1914 ;;		None
+  1915 ;; Auto vars:     Size  Location     Type
+  1916 ;;		None
+  1917 ;; Return value:  Size  Location     Type
+  1918 ;;                  1    wreg      void 
+  1919 ;; Registers used:
+  1920 ;;		wreg
+  1921 ;; Tracked objects:
+  1922 ;;		On entry : 0/0
+  1923 ;;		On exit  : 0/0
+  1924 ;;		Unchanged: 0/0
+  1925 ;; Data sizes:     COMMON   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7   BANK8   BANK9  BANK10  BANK1
+      +1  BANK12
+  1926 ;;      Params:         0       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0
+  1927 ;;      Locals:         0       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0
+  1928 ;;      Temps:          2       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0
+  1929 ;;      Totals:         2       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0
+  1930 ;;Total ram usage:        2 bytes
+  1931 ;; Hardware stack levels used: 1
+  1932 ;; This function calls:
+  1933 ;;		Nothing
+  1934 ;; This function is called by:
+  1935 ;;		_secuP5
+  1936 ;; This function uses a non-reentrant model
+  1937 ;;
+  1938                           
+  1939     05B5                     _Secuencia02:	
+  1940                           ;psect for function _Secuencia02
+  1941                           
+  1942     05B5                     l1607:	
+  1943                           ;incstack = 0
+  1944                           ; Regs used in _Secuencia02: [wreg]
+  1945                           
+  1946                           
+  1947                           ;config.c: 42:     LATC = 0b10101010;
+  1948     05B5  30AA               	movlw	170
+  1949     05B6  0022               	movlb	2	; select bank2
+  1950     05B7  008E               	movwf	14	;volatile
+  1951                           
+  1952                           ;config.c: 43:     _delay((unsigned long)((200)*(20000000UL/4000.0)));
+  1953     05B8  3006               	movlw	6
+  1954     05B9  00FB               	movwf	??_Secuencia02+1
+  1955     05BA  3013               	movlw	19
+  1956     05BB  00FA               	movwf	??_Secuencia02
+  1957     05BC  30AE               	movlw	174
+  1958     05BD                     u1767:
+  1959     05BD  0B89               	decfsz	9,f
+  1960     05BE  2DBD               	goto	u1767
+  1961     05BF  0BFA               	decfsz	??_Secuencia02,f
+  1962     05C0  2DBD               	goto	u1767
+  1963     05C1  0BFB               	decfsz	??_Secuencia02+1,f
+  1964     05C2  2DBD               	goto	u1767
+  1965                           
+  1966                           ;config.c: 44:     LATC = 0b01010101;
+  1967     05C3  3055               	movlw	85
+  1968     05C4  0022               	movlb	2	; select bank2
+  1969     05C5  008E               	movwf	14	;volatile
+  1970                           
+  1971                           ;config.c: 45:     _delay((unsigned long)((200)*(20000000UL/4000.0)));
+  1972     05C6  3006               	movlw	6
+  1973     05C7  00FB               	movwf	??_Secuencia02+1
+  1974     05C8  3013               	movlw	19
+  1975     05C9  00FA               	movwf	??_Secuencia02
+  1976     05CA  30AE               	movlw	174
+  1977     05CB                     u1777:
+  1978     05CB  0B89               	decfsz	9,f
+  1979     05CC  2DCB               	goto	u1777
+  1980     05CD  0BFA               	decfsz	??_Secuencia02,f
+  1981     05CE  2DCB               	goto	u1777
+  1982     05CF  0BFB               	decfsz	??_Secuencia02+1,f
+  1983     05D0  2DCB               	goto	u1777
+  1984     05D1                     l10:
+  1985     05D1  0008               	return
+  1986     05D2                     __end_of_Secuencia02:
+  1987                           
+  1988                           	psect	text10
+  1989     0598                     __ptext10:	
+  1990 ;; *************** function _Secuencia01 *****************
+  1991 ;; Defined at:
+  1992 ;;		line 34 in file "config.c"
+  1993 ;; Parameters:    Size  Location     Type
+  1994 ;;		None
+  1995 ;; Auto vars:     Size  Location     Type
+  1996 ;;		None
+  1997 ;; Return value:  Size  Location     Type
+  1998 ;;                  1    wreg      void 
+  1999 ;; Registers used:
+  2000 ;;		wreg
+  2001 ;; Tracked objects:
+  2002 ;;		On entry : 0/0
+  2003 ;;		On exit  : 0/0
+  2004 ;;		Unchanged: 0/0
+  2005 ;; Data sizes:     COMMON   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7   BANK8   BANK9  BANK10  BANK1
+      +1  BANK12
+  2006 ;;      Params:         0       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0
+  2007 ;;      Locals:         0       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0
+  2008 ;;      Temps:          2       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0
+  2009 ;;      Totals:         2       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0
+  2010 ;;Total ram usage:        2 bytes
+  2011 ;; Hardware stack levels used: 1
+  2012 ;; This function calls:
+  2013 ;;		Nothing
+  2014 ;; This function is called by:
+  2015 ;;		_secuP5
+  2016 ;; This function uses a non-reentrant model
+  2017 ;;
+  2018                           
+  2019     0598                     _Secuencia01:	
+  2020                           ;psect for function _Secuencia01
+  2021                           
+  2022     0598                     l1605:	
+  2023                           ;incstack = 0
+  2024                           ; Regs used in _Secuencia01: [wreg]
+  2025                           
+  2026                           
+  2027                           ;config.c: 35:     LATC = 0x0F;
+  2028     0598  300F               	movlw	15
+  2029     0599  0022               	movlb	2	; select bank2
+  2030     059A  008E               	movwf	14	;volatile
+  2031                           
+  2032                           ;config.c: 36:     _delay((unsigned long)((200)*(20000000UL/4000.0)));
+  2033     059B  3006               	movlw	6
+  2034     059C  00FB               	movwf	??_Secuencia01+1
+  2035     059D  3013               	movlw	19
+  2036     059E  00FA               	movwf	??_Secuencia01
+  2037     059F  30AE               	movlw	174
+  2038     05A0                     u1787:
+  2039     05A0  0B89               	decfsz	9,f
+  2040     05A1  2DA0               	goto	u1787
+  2041     05A2  0BFA               	decfsz	??_Secuencia01,f
+  2042     05A3  2DA0               	goto	u1787
+  2043     05A4  0BFB               	decfsz	??_Secuencia01+1,f
+  2044     05A5  2DA0               	goto	u1787
+  2045                           
+  2046                           ;config.c: 37:     LATC = 0xF0;
+  2047     05A6  30F0               	movlw	240
+  2048     05A7  0022               	movlb	2	; select bank2
+  2049     05A8  008E               	movwf	14	;volatile
+  2050                           
+  2051                           ;config.c: 38:     _delay((unsigned long)((200)*(20000000UL/4000.0)));
+  2052     05A9  3006               	movlw	6
+  2053     05AA  00FB               	movwf	??_Secuencia01+1
+  2054     05AB  3013               	movlw	19
+  2055     05AC  00FA               	movwf	??_Secuencia01
+  2056     05AD  30AE               	movlw	174
+  2057     05AE                     u1797:
+  2058     05AE  0B89               	decfsz	9,f
+  2059     05AF  2DAE               	goto	u1797
+  2060     05B0  0BFA               	decfsz	??_Secuencia01,f
+  2061     05B1  2DAE               	goto	u1797
+  2062     05B2  0BFB               	decfsz	??_Secuencia01+1,f
+  2063     05B3  2DAE               	goto	u1797
+  2064     05B4                     l7:
+  2065     05B4  0008               	return
+  2066     05B5                     __end_of_Secuencia01:
+  2067     007E                     btemp	set	126	;btemp
+  2068     007E                     wtemp0	set	126
+  2069                           
+  2070                           	psect	config
+  2071                           
+  2072                           ;Config register CONFIG1 @ 0x8007
+  2073                           ;	Oscillator Selection
+  2074                           ;	FOSC = HS, HS Oscillator, High-speed crystal/resonator connected between OSC1 and OSC2
+      +                           pins
+  2075                           ;	Watchdog Timer Enable
+  2076                           ;	WDTE = OFF, WDT disabled
+  2077                           ;	Power-up Timer Enable
+  2078                           ;	PWRTE = OFF, PWRT disabled
+  2079                           ;	MCLR Pin Function Select
+  2080                           ;	MCLRE = ON, MCLR/VPP pin function is MCLR
+  2081                           ;	Flash Program Memory Code Protection
+  2082                           ;	CP = OFF, Program memory code protection is disabled
+  2083                           ;	Data Memory Code Protection
+  2084                           ;	CPD = OFF, Data memory code protection is disabled
+  2085                           ;	Brown-out Reset Enable
+  2086                           ;	BOREN = ON, Brown-out Reset enabled
+  2087                           ;	Clock Out Enable
+  2088                           ;	CLKOUTEN = OFF, CLKOUT function is disabled. I/O or oscillator function on the CLKOUT 
+      +                          pin
+  2089                           ;	Internal/External Switchover
+  2090                           ;	IESO = ON, Internal/External Switchover mode is enabled
+  2091                           ;	Fail-Safe Clock Monitor Enable
+  2092                           ;	FCMEN = ON, Fail-Safe Clock Monitor is enabled
+  2093     8007                     	org	32775
+  2094     8007  3FE2               	dw	16354
+  2095                           
+  2096                           ;Config register CONFIG2 @ 0x8008
+  2097                           ;	Flash Memory Self-Write Protection
+  2098                           ;	WRT = OFF, Write protection off
+  2099                           ;	Voltage Regulator Capacitor Enable
+  2100                           ;	VCAPEN = OFF, All VCAP pin functionality is disabled
+  2101                           ;	PLL Enable
+  2102                           ;	PLLEN = OFF, 4x PLL disabled
+  2103                           ;	Stack Overflow/Underflow Reset Enable
+  2104                           ;	STVREN = ON, Stack Overflow or Underflow will cause a Reset
+  2105                           ;	Brown-out Reset Voltage Selection
+  2106                           ;	BORV = LO, Brown-out Reset Voltage (Vbor), low trip point selected.
+  2107                           ;	Low-Voltage Programming Enable
+  2108                           ;	LVP = ON, Low-voltage programming enabled
+  2109     8008                     	org	32776
+  2110     8008  3EFF               	dw	16127
+
+Data Sizes:
+    Strings     0
+    Constant    2
+    Data        0
+    BSS         21
+    Persistent  34
+    Stack       0
+
+Auto Spaces:
+    Space          Size  Autos    Used
+    COMMON           14      4      14
+    BANK0            80      0      13
+    BANK1            80      0       0
+    BANK2            80      0       0
+    BANK3            80      0       0
+    BANK4            80      0       0
+    BANK5            80      0       0
+    BANK6            80      0       0
+    BANK7            80      0       0
+    BANK8            80      0       0
+    BANK9            80      0       0
+    BANK10           80      0       0
+    BANK11           80      0       0
+    BANK12           48      0       0
+
+Pointer List with Targets:
+
+    None.
+
+Critical Paths under _main in COMMON
+
+    _main->_secuP5
+    _secuP5->_Secuencia01
+    _secuP5->_Secuencia02
+    _secuP5->_Secuencia03
+    _secuP5->_Secuencia04
+    _secuP5->_Secuencia05
+    _secuP5->_Secuencia06
+    _secuP5->_Secuencia07
+    _secuP5->_Secuencia08
+    _secuP5->_Secuencia09
+
+Critical Paths under _main in BANK0
+
+    None.
+
+Critical Paths under _main in BANK1
+
+    None.
+
+Critical Paths under _main in BANK2
+
+    None.
+
+Critical Paths under _main in BANK3
+
+    None.
+
+Critical Paths under _main in BANK4
+
+    None.
+
+Critical Paths under _main in BANK5
+
+    None.
+
+Critical Paths under _main in BANK6
+
+    None.
+
+Critical Paths under _main in BANK7
+
+    None.
+
+Critical Paths under _main in BANK8
+
+    None.
+
+Critical Paths under _main in BANK9
+
+    None.
+
+Critical Paths under _main in BANK10
+
+    None.
+
+Critical Paths under _main in BANK11
+
+    None.
+
+Critical Paths under _main in BANK12
+
+    None.
+
+Call Graph Tables:
+
+ ---------------------------------------------------------------------------------
+ (Depth) Function   	        Calls       Base Space   Used Autos Params    Refs
+ ---------------------------------------------------------------------------------
+ (0) _main                                                 0     0      0       0
+                             _secuP5
+ ---------------------------------------------------------------------------------
+ (1) _secuP5                                               2     2      0       0
+                                              2 COMMON     2     2      0
+                        _Secuencia01
+                        _Secuencia02
+                        _Secuencia03
+                        _Secuencia04
+                        _Secuencia05
+                        _Secuencia06
+                        _Secuencia07
+                        _Secuencia08
+                        _Secuencia09
+ ---------------------------------------------------------------------------------
+ (2) _Secuencia09                                          2     2      0       0
+                                              0 COMMON     2     2      0
+ ---------------------------------------------------------------------------------
+ (2) _Secuencia08                                          2     2      0       0
+                                              0 COMMON     2     2      0
+ ---------------------------------------------------------------------------------
+ (2) _Secuencia07                                          2     2      0       0
+                                              0 COMMON     2     2      0
+ ---------------------------------------------------------------------------------
+ (2) _Secuencia06                                          2     2      0       0
+                                              0 COMMON     2     2      0
+ ---------------------------------------------------------------------------------
+ (2) _Secuencia05                                          2     2      0       0
+                                              0 COMMON     2     2      0
+ ---------------------------------------------------------------------------------
+ (2) _Secuencia04                                          2     2      0       0
+                                              0 COMMON     2     2      0
+ ---------------------------------------------------------------------------------
+ (2) _Secuencia03                                          2     2      0       0
+                                              0 COMMON     2     2      0
+ ---------------------------------------------------------------------------------
+ (2) _Secuencia02                                          2     2      0       0
+                                              0 COMMON     2     2      0
+ ---------------------------------------------------------------------------------
+ (2) _Secuencia01                                          2     2      0       0
+                                              0 COMMON     2     2      0
+ ---------------------------------------------------------------------------------
+ Estimated maximum stack depth 2
+ ---------------------------------------------------------------------------------
+
+ Call Graph Graphs:
+
+ _main (ROOT)
+   _secuP5
+     _Secuencia01
+     _Secuencia02
+     _Secuencia03
+     _Secuencia04
+     _Secuencia05
+     _Secuencia06
+     _Secuencia07
+     _Secuencia08
+     _Secuencia09
+
+ Address spaces:
+Name               Size   Autos  Total    Cost      Usage
+BIGRAM             3F0      0       0       0        0.0%
+EEDATA             100      0       0       0        0.0%
+NULL                 0      0       0       0        0.0%
+CODE                 0      0       0       0        0.0%
+BITCOMMON            E      0       0       1        0.0%
+BITSFR0              0      0       0       1        0.0%
+SFR0                 0      0       0       1        0.0%
+COMMON               E      4       E       2      100.0%
+BITSFR1              0      0       0       2        0.0%
+SFR1                 0      0       0       2        0.0%
+BITSFR2              0      0       0       3        0.0%
+SFR2                 0      0       0       3        0.0%
+STACK                0      0       0       3        0.0%
+BITBANK0            50      0       0       4        0.0%
+BITSFR3              0      0       0       4        0.0%
+SFR3                 0      0       0       4        0.0%
+BANK0               50      0       D       5       16.2%
+BITSFR4              0      0       0       5        0.0%
+SFR4                 0      0       0       5        0.0%
+BITBANK1            50      0       0       6        0.0%
+BITSFR5              0      0       0       6        0.0%
+SFR5                 0      0       0       6        0.0%
+BANK1               50      0       0       7        0.0%
+BITSFR6              0      0       0       7        0.0%
+SFR6                 0      0       0       7        0.0%
+BITBANK2            50      0       0       8        0.0%
+BITSFR7              0      0       0       8        0.0%
+SFR7                 0      0       0       8        0.0%
+BANK2               50      0       0       9        0.0%
+BITSFR8              0      0       0       9        0.0%
+SFR8                 0      0       0       9        0.0%
+BITBANK3            50      0       0      10        0.0%
+BITSFR9              0      0       0      10        0.0%
+SFR9                 0      0       0      10        0.0%
+BANK3               50      0       0      11        0.0%
+BITSFR10             0      0       0      11        0.0%
+SFR10                0      0       0      11        0.0%
+BITBANK4            50      0       0      12        0.0%
+BITSFR11             0      0       0      12        0.0%
+SFR11                0      0       0      12        0.0%
+BANK4               50      0       0      13        0.0%
+BITSFR12             0      0       0      13        0.0%
+SFR12                0      0       0      13        0.0%
+BITBANK5            50      0       0      14        0.0%
+BITSFR13             0      0       0      14        0.0%
+SFR13                0      0       0      14        0.0%
+BANK5               50      0       0      15        0.0%
+BITSFR14             0      0       0      15        0.0%
+SFR14                0      0       0      15        0.0%
+BITBANK6            50      0       0      16        0.0%
+BITSFR15             0      0       0      16        0.0%
+SFR15                0      0       0      16        0.0%
+BANK6               50      0       0      17        0.0%
+BITSFR16             0      0       0      17        0.0%
+SFR16                0      0       0      17        0.0%
+BITBANK7            50      0       0      18        0.0%
+BITSFR17             0      0       0      18        0.0%
+SFR17                0      0       0      18        0.0%
+BANK7               50      0       0      19        0.0%
+BITSFR18             0      0       0      19        0.0%
+SFR18                0      0       0      19        0.0%
+BITSFR19             0      0       0      20        0.0%
+SFR19                0      0       0      20        0.0%
+ABS                  0      0      1B      20        0.0%
+BITBANK8            50      0       0      21        0.0%
+BITSFR20             0      0       0      21        0.0%
+SFR20                0      0       0      21        0.0%
+BANK8               50      0       0      22        0.0%
+BITSFR21             0      0       0      22        0.0%
+SFR21                0      0       0      22        0.0%
+BITBANK9            50      0       0      23        0.0%
+BITSFR22             0      0       0      23        0.0%
+SFR22                0      0       0      23        0.0%
+BANK9               50      0       0      24        0.0%
+BITSFR23             0      0       0      24        0.0%
+SFR23                0      0       0      24        0.0%
+BITBANK10           50      0       0      25        0.0%
+BITSFR24             0      0       0      25        0.0%
+SFR24                0      0       0      25        0.0%
+BANK10              50      0       0      26        0.0%
+BITSFR25             0      0       0      26        0.0%
+SFR25                0      0       0      26        0.0%
+BITBANK11           50      0       0      27        0.0%
+BITSFR26             0      0       0      27        0.0%
+SFR26                0      0       0      27        0.0%
+BANK11              50      0       0      28        0.0%
+BITSFR27             0      0       0      28        0.0%
+SFR27                0      0       0      28        0.0%
+BITBANK12           30      0       0      29        0.0%
+BITSFR28             0      0       0      29        0.0%
+SFR28                0      0       0      29        0.0%
+BANK12              30      0       0      30        0.0%
+BITSFR29             0      0       0      30        0.0%
+SFR29                0      0       0      30        0.0%
+BITSFR30             0      0       0      31        0.0%
+SFR30                0      0       0      31        0.0%
+DATA                 0      0      1B      31        0.0%
+BITSFR31             0      0       0      32        0.0%
+SFR31                0      0       0      32        0.0%
+
+
+Microchip Technology PIC Macro Assembler V2.41 build 20230208172133 
+Symbol Table                                                                                   Wed Sep 06 08:08:57 2023
+
+                      l7 05B4                       l10 05D1                       l13 067D  
+                     l22 0619                       l31 0597                       l16 06B6  
+                     l25 0644                       l19 05EE                       l28 07EC  
+                    l206 0719                      l312 057D                      _led 0074  
+                    wreg 0009                     l1611 067E                     l1605 0598  
+                   l1613 05D2                     l1621 0589                     l2093 06F1  
+                   l1607 05B5                     l1615 05EF                     l1609 0645  
+                   l1617 061A                     l1641 06D0                     l1633 06B7  
+                   l1619 071A                     l1651 06E4                     l1643 06D4  
+                   l1635 06BB                     l1653 06E8                     l1645 06D8  
+                   l1637 06C8                     l1647 06DC                     l1639 06CC  
+                   l1649 06E0                     l1657 06EC                     l1659 070E  
+                   l1975 057D                     _LATC 010E                     _LATD 010F  
+                   u1507 0768                     u1517 0776                     u1437 0713  
+                   u1607 0622                     u1527 0784                     u1447 058E  
+                   u1617 0630                     u1537 0792                     u1457 0722  
+                   u1707 06A2                     u1627 063E                     u1547 07A0  
+                   u1467 0730                     u1717 06B0                     u1637 05F7  
+                   u1557 07AE                     u1477 073E                     u1727 064D  
+                   u1647 0605                     u1567 07BC                     u1487 074C  
+                   u1737 065B                     u1657 0613                     u1577 07CA  
+                   u1497 075A                     u1747 0669                     u1667 05DA  
+                   u1587 07D8                     u1757 0677                     u1677 05E8  
+                   u1597 07E6                     u1767 05BD                     u1687 0686  
+                   u1777 05CB                     u1697 0694                     u1787 05A0  
+                   u1797 05AE                     _WPUB 020D                     _main 057D  
+                   fsr0h 0005                     indf0 0000                     fsr0l 0004  
+                   btemp 007E                     start 0002                    ?_main 007A  
+                  _PORTB 000D                    _PORTD 000F                    _TRISA 008C  
+                  _TRISB 008D                    _TRISC 008E                    _TRISD 008F  
+                  _marca 002A                    wtemp0 007E          __initialization 07ED  
+           __end_of_main 0583                   ??_main 007E            ??_Secuencia01 007A  
+          ??_Secuencia02 007A            ??_Secuencia03 007A            ??_Secuencia04 007A  
+          ??_Secuencia05 007A            ??_Secuencia06 007A            ??_Secuencia07 007A  
+          ??_Secuencia08 007A            ??_Secuencia09 007A                   _ANSELA 018C  
+                 _ANSELB 018D                   _ANSELD 018F                   _decena 0022  
+                 _secuP5 06B7                   _numero 0072                   _unidad 0024  
+    __end_of_Secuencia01 05B5      __end_of_Secuencia02 05D2      __end_of_Secuencia03 067E  
+    __end_of_Secuencia04 06B7      __end_of_Secuencia05 05EF      __end_of_Secuencia06 061A  
+    __end_of_Secuencia07 0645      __end_of_Secuencia08 07ED      __end_of_Secuencia09 0598  
+__end_of__initialization 07FD           __pcstackCOMMON 007A           _OPTION_REGbits 0095  
+             __pbssBANK0 0020               __pmaintext 057D                  ?_secuP5 007A  
+            _Secuencia01 0598              _Secuencia02 05B5              _Secuencia03 0645  
+            _Secuencia04 067E              _Secuencia05 05D2              _Secuencia06 05EF  
+            _Secuencia07 061A              _Secuencia08 071A              _Secuencia09 0589  
+                _Nibble1 0028                  _Nibble2 0026                  _centena 0020  
+                __ptext1 06B7                  __ptext2 0589                  __ptext3 071A  
+                __ptext4 061A                  __ptext5 05EF                  __ptext6 05D2  
+                __ptext7 067E                  __ptext8 0645                  __ptext9 05B5  
+                _val_sec 002B                  _residuo 0070                  clrloop0 0584  
+   end_of_initialization 07FD                _PORTAbits 000C                _PORTBbits 000D  
+              _PORTCbits 000E                _PORTDbits 000F                _TRISAbits 008C  
+              _TRISBbits 008D                _TRISCbits 008E                _TRISDbits 008F  
+             _tmultiplex 0800           __end_of_secuP5 071A      start_initialization 07ED  
+               ??_secuP5 007C             ?_Secuencia01 007A             ?_Secuencia02 007A  
+           ?_Secuencia03 007A             ?_Secuencia04 007A             ?_Secuencia05 007A  
+           ?_Secuencia06 007A             ?_Secuencia07 007A             ?_Secuencia08 007A  
+           ?_Secuencia09 007A              __pbssCOMMON 0070                ___latbits 0003  
+              __pnvBANK0 002B                 _LATAbits 010C                 _LATBbits 010D  
+               _LATCbits 010E                 _LATDbits 010F                clear_ram0 0583  
+            _contadordos 0076               _ANSELAbits 018C                 __ptext10 0598  
+               _contador 0078            __pstringtext1 0800       __end_of_tmultiplex 0802  
